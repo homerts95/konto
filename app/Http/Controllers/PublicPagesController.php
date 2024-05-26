@@ -9,12 +9,14 @@ use App\Models\Pages\CustomPage;
 use App\Models\Pages\HomePageContent;
 use App\Models\Product;
 use Inertia\Inertia;
+use Inertia\Response;
 
 class PublicPagesController extends Controller
 {
     //
-    public function homePage()
+    public function homePage(): Response
     {
+
         $homePageContent = HomePageContent::first();
         return Inertia::render('Public/Home', [
             'homePageContent' => $homePageContent,
@@ -23,7 +25,7 @@ class PublicPagesController extends Controller
         ]);
     }
 
-    public function aboutPage()
+    public function aboutPage(): Response
     {
 
         $aboutPageContent = AboutPageContent::first();
@@ -32,7 +34,7 @@ class PublicPagesController extends Controller
         ]);
     }
 
-    public function contactPage()
+    public function contactPage(): Response
     {
         $contactPageContent = ContactPageContent::first();
         return Inertia::render('Public/Contact',[
@@ -40,7 +42,7 @@ class PublicPagesController extends Controller
         ]);
     }
 
-    public function customPage(CustomPage $customPage)
+    public function customPage(CustomPage $customPage): Response
     {
         return Inertia::render('Public/CustomPage',[
             'customPageContent' => $customPage,

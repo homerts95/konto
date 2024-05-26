@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MainMenu;
-use App\Models\Product;
-use Darryldecode\Cart\CartCollection;
+use Darryldecode\Cart\Cart;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+use Inertia\Response;
 
 // use App\Models\Cart;
 
@@ -16,25 +16,24 @@ class CartController extends Controller
 
     public function __construct()
     {
-        $cartItems = \Cart::getContent();
-        if(Auth::check()) {
+        $cartItems = Cart::getContent();
+        if (Auth::check()) {
             \Cart::session(Auth::user()->id);
-            foreach($cartItems as $row) {
-                dd($row);
+            foreach ($cartItems as $row) {
                 \Cart::add($row);
             }
         }
     }
 
-    public function index()
+    public function index(): Response
     {
         return Inertia::render('Cart/Cart');
     }
 
-    public function add()
+    public function add(): RedirectResponse
     {
         $product = request()->product;
-        // dd($product);
+
         \Cart::add(
             array(
                 'id' => $product['id'],
@@ -43,7 +42,7 @@ class CartController extends Controller
                 'quantity' => request()->quantity,
                 'attributes' => [
                     'image' => $product['thumbnail_url'],
-                    'price_with_currency'=>$product['price_with_currency']
+                    'price_with_currency' => $product['price_with_currency']
                 ],
                 'associatedModel' => $product
             )
@@ -51,7 +50,7 @@ class CartController extends Controller
         return redirect()->back()->with('success', 'Product is Added to Cart Successfully !');
     }
 
-    public function update(Request $request)
+    public function update(Request $request): RedirectResponse
     {
 
         \Cart::update(
@@ -67,10 +66,9 @@ class CartController extends Controller
         return redirect()->back();
     }
 
-    public function remove(Request $request)
+    public function remove(Request $request): RedirectResponse
     {
         \Cart::remove($request->id);
-        
         return redirect()->back();
     }
 }

@@ -17,8 +17,8 @@ class CategoryFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->unique()->word(),
-            'slug' => $this->faker->unique()->word(),
+            'name' => 'Κάβα',
+            'slug' => 'kava',
             'img'=> $this->faker->randomElement([
                 "https://tailwindui.com/img/ecommerce-images/home-page-02-edition-01.jpg",
                 'https://tailwindui.com/img/ecommerce-images/home-page-02-edition-02.jpg',

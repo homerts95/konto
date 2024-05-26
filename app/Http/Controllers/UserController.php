@@ -3,20 +3,23 @@
 namespace App\Http\Controllers;
 use App\Models\ThemeSettings\MainMenu;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Validation\Rule;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Inertia\Response;
 
 class UserController extends Controller
 {
     //
-    public function login()
+    public function login(): Response
     {
         return Inertia::render('Auth/Login');
     }
 
-    public function auth(Request $request)
+    public function auth(Request $request): RedirectResponse
     {
         $attributes = $request->validate([
             'email' => ['required','email'],
@@ -50,32 +53,32 @@ class UserController extends Controller
             return redirect()->intended('dashboard')->with('success','You are logged-in');
         }
 
-        
+
 
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.'
         ])->onlyInput('email');
     }
 
-    public function logout(Request $request)
+    public function logout(Request $request): RedirectResponse
     {
         Auth::logout();
 
         \Cart::session('4yTlTDKu3oJOfzD')->clear();
 
         $request->session()->invalidate();
-     
+
         $request->session()->regenerateToken();
-     
+
         return redirect('/');
     }
 
-    public function create()
+    public function create(): Response
     {
         return Inertia::render('Auth/Register');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
 
             $attributes = $this->validateUser();

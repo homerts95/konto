@@ -34,5 +34,5 @@ createInertiaApp({
             .component("Head", Head)
             .mount(el);
     },
-    title: (title) => `LaraVueTail - E-commerce`,
+    title: (title) => `Kontonios`,
 });

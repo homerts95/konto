@@ -32,24 +32,31 @@ class DatabaseSeeder extends Seeder
         SiteIdentity::factory(1)->create();
         FooterContent::factory(1)->create();
         HomePageContent::factory(1)->create();
-        AboutPageContent::factory(1)->create();
+//        AboutPageContent::factory(1)->create();
         ContactPageContent::factory(1)->create();
 
         User::factory()->create([
-            'email' => 'test@example.com'
+            'email' => 'user@user.com',
+            'role' => 'user'
         ]);
 
         User::factory()->create([
-            'email' => 'admin@example.com'
+            'email' => 'admin@admin.com',
+            'role' => 'admin',
+            'password' => 'admin'
         ]);
 
-        // User::factory(5)->create();
+        User::factory()->create([
+            'email' => 'god@god.com',
+            'role' => 'god',
+            'password' => 'god'
+        ]);
 
-        // Cart::factory()->create([
-        //     'user_id' => 1
-        // ]);
-
-        // Cart::factory(5)->create();
+//         Cart::factory()->create([
+//             'user_id' => 1
+//         ]);
+//
+//         Cart::factory(5)->create();
 
         Product::factory(25)->create();
     }

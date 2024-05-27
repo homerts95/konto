@@ -17,13 +17,13 @@ class SiteIdentityFactory extends Factory
     public function definition()
     {
         return [
-            'site_name' => 'LVTShop',
-            'site_domain' => 'ecommerce-demo.laravuetail.com',
-            'site_email' => 'official@laravuetail.com',
-            'site_owner_name' => 'Ameerali C',
-            'site_owner_email' => 'admin@laravuetail.com',
+            'site_name' => 'Kontonios',
+            'site_domain' => 'kontonios.gr',
+            'site_email' => 'kontonios@gmail.com',
+            'site_owner_name' => 'Panos vlassopoulos',
+            'site_owner_email' => 'P.kontonios@gmail.com',
             'logo_image' => 'https://laravuetail.com/storage/images/ecommerce-logo.svg',
-            'banner_text' => 'New Arrivals Up to 60% Off!',
+            'banner_text' => '',
         ];
     }
 }

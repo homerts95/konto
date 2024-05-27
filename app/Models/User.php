@@ -15,8 +15,6 @@ use Darryldecode\Cart\CartCollection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
 
-
-
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -32,64 +30,62 @@ class User extends Authenticatable
     public function scopeFilter($query, array $filters)
     {
         $query
-        ->when(
-            $filters['search'] ?? false,
-            fn($query, $search) =>
-                        $query
-                            ->where('email', 'like', "%{$search}%")
-                            ->orWhere('first_name', 'like', "%{$search}%")
-                            ->orWhere('last_name', 'like', "%{$search}%")
-                            ->orWhere('phone_number', '=', $search)
-                            ->orWhere('id', '=', $search)
-                    
-        )
-                    
-        ->when(
-            $filters['dateStart'] ?? false, 
-            function ($query, $dateStart) {
-                $dateStart = Carbon::createFromFormat('m/d/Y', $dateStart)->format('Y-m-d');
-                $query->whereDate('created_at', '>=', $dateStart);
-            }
-        )
-        ->when(
-            $filters['dateEnd'] ?? false,
-            function ($query, $dateEnd) {
-                $dateEnd = Carbon::createFromFormat('m/d/Y', $dateEnd)->format('Y-m-d');
-                $query->whereDate('created_at', '<=', $dateEnd);
-            }
-        )
-        ->when(
-            $filters['sortBy'] ?? 'default',
-            function ($query, $sortBy) {
-                if ($sortBy === 'date-dsc') {
-                    $query->latest();
+            ->when(
+                $filters['search'] ?? false,
+                fn($query, $search) => $query
+                    ->where('email', 'like', "%{$search}%")
+                    ->orWhere('first_name', 'like', "%{$search}%")
+                    ->orWhere('last_name', 'like', "%{$search}%")
+                    ->orWhere('phone_number', '=', $search)
+                    ->orWhere('id', '=', $search)
+
+            )
+            ->when(
+                $filters['dateStart'] ?? false,
+                function ($query, $dateStart) {
+                    $dateStart = Carbon::createFromFormat('m/d/Y', $dateStart)->format('Y-m-d');
+                    $query->whereDate('created_at', '>=', $dateStart);
                 }
-                if ($sortBy === 'date-asc') {
-                    $query->oldest();
+            )
+            ->when(
+                $filters['dateEnd'] ?? false,
+                function ($query, $dateEnd) {
+                    $dateEnd = Carbon::createFromFormat('m/d/Y', $dateEnd)->format('Y-m-d');
+                    $query->whereDate('created_at', '<=', $dateEnd);
                 }
-                if ($sortBy === 'price-dsc') {
-                    $query->orderBy('price', 'desc');
+            )
+            ->when(
+                $filters['sortBy'] ?? 'default',
+                function ($query, $sortBy) {
+                    if ($sortBy === 'date-dsc') {
+                        $query->latest();
+                    }
+                    if ($sortBy === 'date-asc') {
+                        $query->oldest();
+                    }
+                    if ($sortBy === 'price-dsc') {
+                        $query->orderBy('price', 'desc');
+                    }
+                    if ($sortBy === 'price-asc') {
+                        $query->orderBy('price', 'asc');
+                    }
+                    if ($sortBy === 'inventory-asc') {
+                        $query->orderBy('inventory', 'asc');
+                    }
+                    if ($sortBy === 'inventory-dsc') {
+                        $query->orderBy('inventory', 'dsc');
+                    }
+                    if ($sortBy === 'default') {
+                        $query->latest();
+                    }
                 }
-                if ($sortBy === 'price-asc') {
-                    $query->orderBy('price', 'asc');
-                }
-                if ($sortBy === 'inventory-asc') {
-                    $query->orderBy('inventory', 'asc');
-                }
-                if ($sortBy === 'inventory-dsc') {
-                    $query->orderBy('inventory', 'dsc');
-                }
-                if ($sortBy === 'default') {
-                    $query->latest();
-                }
-            }
-        );
+            );
     }
 
     protected function avatar(): Attribute
     {
         return Attribute::make(
-        get: fn($value) => asset($value),
+            get: fn($value) => asset($value),
         );
     }
 
@@ -116,6 +112,26 @@ class User extends Authenticatable
     public function setPasswordAttribute($password)
     {
         $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function isAdmin(): bool
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isUser(): bool
+    {
+        return $this->role === 'user';
+    }
+
+    public function isGod(): bool
+    {
+        return $this->role === 'god';
+    }
+
+    public function isElevated(): bool
+    {
+        return $this->role === 'god' || $this->role === 'admin';
     }
 
 

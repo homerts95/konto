@@ -2,7 +2,7 @@
   <div>
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <div class="mx-auto max-w-2xl pt-12 sm:pt-16 lg:max-w-none lg:pt-32">
-        <h2 class="text-2xl font-bold text-gray-900">Categories</h2>
+        <h2 class="text-2xl font-bold text-gray-900">{{useTrans('categories.categories')}}</h2>
 
         <div class="mt-6">
           <vueper-slides
@@ -48,7 +48,9 @@
 <script>
 import { VueperSlides, VueperSlide } from "vueperslides";
 import "vueperslides/dist/vueperslides.css";
+import {useTrans} from "../../composables/trans";
 export default {
+    methods: {useTrans},
   components: { VueperSlides, VueperSlide },
   props: ["categories"],
 };

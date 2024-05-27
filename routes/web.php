@@ -22,7 +22,7 @@ use App\Http\Controllers\AdminControllers\PagesControllers\AdminHomePageContentC
 use App\Http\Controllers\AdminControllers\PagesControllers\AdminAboutPageContentController;
 use App\Http\Controllers\AdminControllers\PagesControllers\AdminContactPageContentController;
 use App\Http\Controllers\AdminControllers\PagesControllers\AdminCustomPageController;
-
+use Inertia\Inertia;
 
 
 /*
@@ -34,9 +34,12 @@ use App\Http\Controllers\AdminControllers\PagesControllers\AdminCustomPageContro
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*/  App::setLocale( 'el' );
 Route::name('public.')->group(function () {
     Route::get('/', [PublicPagesController::class, 'homePage'])->name('home');
+
+
+//    Route::get( '/', fn() => dd( Inertia::getShared() ) );
     Route::get('/about', [PublicPagesController::class, 'aboutPage'])->name('about');
     Route::get('/contact', [PublicPagesController::class, 'contactPage'])->name('contact');
     Route::get('/pages/{customPage:slug}', [PublicPagesController::class, 'customPage'])->name('customPage');
@@ -47,8 +50,8 @@ Route::name('public.')->group(function () {
         Route::post('login', [UserController::class, 'auth'])->middleware('guest');
         Route::post('logout', [UserController::class, 'logout'])->middleware('auth')->name('logout');
 
-        Route::get('register', [UserController::class, 'create'])->middleware('guest')->name('register');
-        Route::post('register', [UserController::class, 'store'])->middleware('guest');
+//        Route::get('register', [UserController::class, 'create'])->middleware('guest')->name('register');
+//        Route::post('register', [UserController::class, 'store'])->middleware('guest');
     });
 
     Route::name('products.')->group(function(){
@@ -93,7 +96,7 @@ Route::name('admin.')->group(function(){
             Route::get('/ecommerce-settings', [AdminEcommerceSettingsController::class, 'edit'])->name('ecommerce-settings_edit');
             Route::put('/ecommerce-settings', [AdminEcommerceSettingsController::class, 'update'])->name('ecommerce-settings_update');
             Route::put('/products/{product}/deleteImage', [AdminProductController::class, 'deleteImage']);
-            Route::put('/orders/{order}/edit-status', [AdminOrderController::class, 'updateOrderStatus']); 
+            Route::put('/orders/{order}/edit-status', [AdminOrderController::class, 'updateOrderStatus']);
 
             Route::name('pages.')->group(function(){
                 Route::prefix('pages')->group(function () {
@@ -122,7 +125,7 @@ Route::name('admin.')->group(function(){
 
 
         });
-    
+
     });
 });
 

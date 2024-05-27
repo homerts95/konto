@@ -18,16 +18,16 @@ class FooterContentFactory extends Factory
     {
         return [
             'page_links'=> json_encode([
+//                    [
+//                        'pageName'=>'About',
+//                        'pageLink'=>asset('about')
+//                    ],
                     [
-                        'pageName'=>'About',
-                        'pageLink'=>asset('about')
-                    ],
-                    [
-                        'pageName'=>'Contact',
+                        'pageName'=>'Επικοινωνία',
                         'pageLink'=>asset('contact')
                     ]
                     ]),
-                    
+
             'social_links'=> json_encode([
                     [
                         'socialName'=>'facebook',

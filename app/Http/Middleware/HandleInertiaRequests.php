@@ -7,7 +7,9 @@ use App\Models\ThemeSettings\FooterContent;
 use App\Models\ThemeSettings\MainMenu;
 use App\Models\ThemeSettings\SiteIdentity;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\File;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
@@ -41,6 +43,7 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request) : array
     {
+        $translationsPath = lang_path(App::currentLocale() . ".json");
         if (Auth::check()) {
             \Cart::session(Auth::user()->id);
         }
@@ -51,7 +54,8 @@ class HandleInertiaRequests extends Middleware
             'siteName' => SiteIdentity::first()->site_name,
             'app_url' => asset('/'),
             'currencySymbol' => EcommerceSettings::first()->currency_symbol,
-            'auth' => (Auth::check()) ? ['firstName' => Auth::user()->first_name, 'email' => Auth::user()->email, 'avatar' => Auth::user()->avatar, 'isAdmin' => Auth::user()->can('admin')] : false,
+            'auth' => (Auth::check()) ? ['firstName' => Auth::user()->first_name, 'email' => Auth::user()->email, 'avatar' => Auth::user()->avatar, 'isElevated' => Auth::user()->isElevated(), 'isGod' => Auth::user()->isGod()] : false,
+            'translations' => File::exists($translationsPath) ? json_decode(File::get($translationsPath), true) : [],
             'flash' => [
                 'success' => fn() => $request->session()->get('success'),
             ]);

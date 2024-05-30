@@ -15,7 +15,7 @@
             <div class="flex px-4 pb-2 pt-5">
               <button type="button" class="-m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400"
                 @click="open = false">
-                <span class="sr-only">Close menu</span>
+                <span class="sr-only" v-text="useTrans('navbar.close')"></span>
                 <XMarkIcon class="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
@@ -48,7 +48,7 @@
                       <span class="absolute inset-0 z-10" aria-hidden="true" />
                       {{ item.name }}
                       </Link>
-                      <p aria-hidden="true" class="mt-1">Shop now</p>
+                      <p aria-hidden="true" class="mt-1" v-text="useTrans('navbar.check_it_out')"></p>
                     </div>
                   </div>
                   <div v-for="section in category.sections" :key="section.name">
@@ -76,9 +76,9 @@
               <div class="flow-root">
                 <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Sign in</a>
               </div>
-              <div class="flow-root">
-                <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Create account</a>
-              </div>
+<!--              <div class="flow-root">-->
+<!--                <a href="#" class="-m-2 block p-2 font-medium text-gray-900">Create account</a>-->
+<!--              </div>-->
             </div>
 
             <div class="border-t border-gray-200 px-4 py-6">
@@ -96,7 +96,7 @@
   </TransitionRoot>
 
   <header class="relative bg-white">
-    <Link href="/admin-dashboard" v-if="usePage().props.auth.isAdmin"
+    <Link href="/admin-dashboard" v-if="usePage().props.auth.isElevated"
       class="fixed top-0 left-0 right-0 z-50 flex h-10 items-center justify-center bg-gray-800 px-4 text-xs font-medium text-white sm:px-6 lg:px-8 hover:underline cursor-pointer gap-2">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-4 h-4">
       <path fill-rule="evenodd"
@@ -107,7 +107,7 @@
         clip-rule="evenodd" />
     </svg>
 
-    Hello Admin, Visit Admin Dashboard!
+    <span v-text="useTrans('navbar.click_me_for_admin_panel')"></span>
     </Link>
 
     <p class="flex h-10 items-center justify-center bg-blue-600 px-4 text-sm font-medium text-white sm:px-6 lg:px-8">
@@ -208,32 +208,32 @@
               </svg>
               </Link>
               <span class="h-6 w-px bg-gray-200" aria-hidden="true" />
-              <Link href="/register" class="text-sm font-medium text-gray-700 hover:text-gray-800"
-                v-if="!usePage().props.auth.firstName ?? false">Create account</Link>
-              <Link href="/logout" method="post" as="button" class="text-sm font-medium text-gray-700 hover:text-gray-800"
-                v-else>Log out</Link>
+<!--              <Link href="/register" class="text-sm font-medium text-gray-700 hover:text-gray-800"-->
+<!--                v-if="!usePage().props.auth.firstName ?? false">Create account</Link>-->
+<!--              <Link href="/logout" method="post" as="button" class="text-sm font-medium text-gray-700 hover:text-gray-800"-->
+<!--                v-else>Log out</Link>-->
             </div>
 
-            <div class="hidden lg:ml-8 lg:flex">
-              <a href="#" class="flex items-center text-gray-700 hover:text-gray-800">
-                <img src="https://flagicons.lipis.dev/flags/4x3/in.svg" alt="" class="block h-auto w-5 flex-shrink-0" />
-                <span class="ml-3 block text-sm font-medium">IND</span>
-                <span class="sr-only">, change currency</span>
-              </a>
-            </div>
+<!--            <div class="hidden lg:ml-8 lg:flex">-->
+<!--              <a href="#" class="flex items-center text-gray-700 hover:text-gray-800">-->
+<!--                <img src="https://flagicons.lipis.dev/flags/4x3/in.svg" alt="" class="block h-auto w-5 flex-shrink-0" />-->
+<!--                <span class="ml-3 block text-sm font-medium">IND</span>-->
+<!--                <span class="sr-only">, change currency</span>-->
+<!--              </a>-->
+<!--            </div>-->
 
             <!-- Search -->
             <div class="flex lg:ml-6">
               <button class="p-2 text-gray-400 hover:text-gray-500" data-dropdown-toggle="dropdownSearch"
                 data-dropdown-placement="bottom" id="dropdownSearchButton">
-                <span class="sr-only">Search</span>
+                <span class="sr-only" v-text="useTrans('navbar.search_product')"> </span>
                 <MagnifyingGlassIcon class="h-6 w-6" aria-hidden="true" />
               </button>
             </div>
             <div id="dropdownSearch" class="z-10 bg-gray-400 rounded-lg shadow w-60 dark:bg-gray-700 mt-10"
               :class="{ 'hidden ': !searchTerm }">
               <div class="p-3">
-                <label for="input-group-search" class="sr-only">Search</label>
+                <label for="input-group-search" class="sr-only" v-text="useTrans('navbar.search')"></label>
                 <div class="relative">
                   <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                     <svg class="w-5 h-5 text-gray-500 dark:text-gray-400" aria-hidden="true" fill="currentColor"
@@ -257,7 +257,7 @@
                   aria-hidden="true" @click="$emit('cartOpen', true)" />
                 <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{{
                   usePage().props.cartCount ?? 0 }}</span>
-                <span class="sr-only">items in cart, view bag</span>
+                <span class="sr-only" v-text="useTrans('navbar.item_in_cart_view_cart')"></span>
               </div>
             </div>
           </div>
@@ -314,6 +314,8 @@ import {
   XMarkIcon,
 } from "@heroicons/vue/24/outline";
 import { router } from "@inertiajs/vue3";
+import {useTrans} from "../../../composables/trans";
 
 const open = ref(false);
 </script>
+¬lL

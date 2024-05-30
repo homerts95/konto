@@ -46,6 +46,7 @@ class UserController extends Controller
                     );
                 }
             }
+//admin can go to user dashboard
             if(Auth::user()->can('admin')){
                 return redirect()->intended('admin-dashboard')->with('success','You are logged-in');
 

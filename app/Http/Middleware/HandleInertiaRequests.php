@@ -3,6 +3,7 @@
 namespace App\Http\Middleware;
 
 use App\Models\EcommerceSettings;
+use App\Models\Order;
 use App\Models\ThemeSettings\FooterContent;
 use App\Models\ThemeSettings\MainMenu;
 use App\Models\ThemeSettings\SiteIdentity;
@@ -56,6 +57,7 @@ class HandleInertiaRequests extends Middleware
             'currencySymbol' => EcommerceSettings::first()->currency_symbol,
             'auth' => (Auth::check()) ? ['firstName' => Auth::user()->first_name, 'email' => Auth::user()->email, 'avatar' => Auth::user()->avatar, 'isElevated' => Auth::user()->isElevated(), 'isGod' => Auth::user()->isGod()] : false,
             'translations' => File::exists($translationsPath) ? json_decode(File::get($translationsPath), true) : [],
+            'orderCount' => Order::count(),
             'flash' => [
                 'success' => fn() => $request->session()->get('success'),
             ]);

@@ -28,8 +28,12 @@ class AppServiceProvider extends ServiceProvider
     {
         Model::unguard();
 
-//        Gate::define('admin', function (User $user) {
-//            return $user->email === 'admin@example.com';
-//        });
+        Gate::define('admin', function (User $user) {
+            return $user->isAdmin();
+        });
+
+        Gate::define('god', function (User $user) {
+            return $user->isGod();
+        });
     }
 }

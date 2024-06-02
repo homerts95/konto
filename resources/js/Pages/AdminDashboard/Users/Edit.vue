@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-screen-xl px-1 lg:px-12 my-11 pb-11">
       <!-- Modal content -->
 
-      <Breadcrump :links="{ users: 'users', 'Edit User': '' }"></Breadcrump>
+      <Breadcrump :links="{ users: 'users', 'Επεξεργασία χρήστη': '' }"></Breadcrump>
 
       <AlertDelete
         v-if="deleteAlertUser"
@@ -16,7 +16,7 @@
         class="relative p-4 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 sm:p-5"
       >
         <!-- Modal header -->
-        <ModalHeader :heading="`Edit user - #${user.id}`" :url="$page.url"></ModalHeader>
+        <ModalHeader :heading="`Επεξεργασία χρήστη - #${user.id}`" :url="$page.url"></ModalHeader>
 
         <!-- Modal body -->
         <form action="#" @submit.prevent="">
@@ -27,18 +27,18 @@
                   <!-- product general details  -->
                   <div>
                     <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                      User General Details:
+                        {{useTrans('user.user_general_details')}}
                     </p>
                     <div class="grid gap-4 sm:grid-cols-2">
                       <FormInput
-                        :label="'First Name'"
+                        :label="useTrans('user.first_name')"
                         :name="'first_name'"
                         :type="'text'"
                         v-model="userInfo.first_name"
                         :error="errors.first_name"
                       ></FormInput>
                       <FormInput
-                        :label="'Last Name'"
+                        :label="useTrans('user.last_name')"
                         :name="'last_name'"
                         :type="'text'"
                         v-model="userInfo.last_name"
@@ -54,7 +54,7 @@
                         :error="errors.email"
                       ></FormInput>
                       <FormInput
-                        :label="'Phone Number'"
+                        :label="useTrans('user.phone_number')"
                         :name="'phone_number'"
                         :type="'number'"
                         v-model="userInfo.phone_number"
@@ -63,14 +63,14 @@
                     </div>
                     <div class="grid gap-4 sm:grid-cols-2">
                       <FormInput
-                        :label="'Date of Birth'"
+                        :label="useTrans('user.dob')"
                         :name="'birthday'"
                         :type="'date'"
                         v-model="userInfo.birthday"
                         :error="errors.birthday"
                       ></FormInput>
                       <FormInput
-                        :label="'Gender'"
+                        :label="useTrans('user.gender')"
                         :name="'gender'"
                         :type="'text'"
                         v-model="userInfo.gender"
@@ -79,14 +79,14 @@
                     </div>
                     <div class="grid gap-4 sm:grid-cols-2">
                       <FormInput
-                        :label="'Change Password'"
+                        :label="useTrans('user.change_password')"
                         :name="'password'"
                         :type="'password'"
                         v-model="userInfo.password"
                         :error="errors.password"
                       ></FormInput>
                       <FormInput
-                        :label="'Confirm Password'"
+                        :label="useTrans('user.confirm_password')"
                         :name="'confirm_password'"
                         :type="'password'"
                         v-model="userInfo.password_confirmation"
@@ -99,12 +99,12 @@
                 <div class="grid sm:col-span-2">
                   <div>
                     <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                      Profile Picture:
+                        {{ useTrans('user.profile_image') }}
                     </p>
 
                     <FormFileUploadSingle
                       @fileChange="(file) => (avatar = file[0])"
-                      :label="'Profile Picture'"
+                      :label="useTrans('user.profile_image')"
                       :oldImageLink="oldAvatarImage"
                       :name="'avatar'"
                       :error="errors.avatar"
@@ -120,12 +120,12 @@
             <div class="flex items-center space-x-4">
               <Button
                 @click.prevent="updateUser()"
-                :text="'Update User'"
+                :text="useTrans('user.update_user')"
                 :color="'blue'"
               ></Button>
               <Button
                 @click.prevent="deleteUser()"
-                :text="'Delete User'"
+                :text="useTrans('user.delete_user')"
                 :disableFlash="true"
                 :color="'red'"
               ></Button>
@@ -155,8 +155,7 @@ export default {
     deleteUser() {
       window.scrollTo(0, 0);
       this.deleteAlertUser = true;
-      this.deleteAlertUserText = `Deleting the User will permanently removed from the database. You can't recover the
-        user again. Are you sure about deleting?`;
+      this.deleteAlertUserText = useTrans('are_you_sure');
       setTimeout(() => (this.deleteAlertUser = false), 5000);
     },
     deleteUserConfirm() {
@@ -191,6 +190,7 @@ import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadS
 import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
 import AlertDelete from "../../../Shared/AdminDashboardComponents/AlertDelete.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

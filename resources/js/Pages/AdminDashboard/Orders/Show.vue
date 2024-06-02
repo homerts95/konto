@@ -1,7 +1,7 @@
 <template>
   <section class="dark:bg-gray-900 h-screen overflow-x-hidden md:overflow-x-visible p-1">
     <div class="mx-auto max-w-screen-xl px-1 lg:px-12 my-11">
-      <Breadcrump :links="{ orders: 'orders', 'Show Order': '' }"></Breadcrump>
+      <Breadcrump :links="{ orders: 'orders', 'Παραγγελίες': '' }"></Breadcrump>
       <AlertDelete
         v-if="deleteAlertOrder"
         @close="deleteAlertOrder = false"
@@ -16,7 +16,7 @@
           <h5
             class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"
           >
-            Order #{{ order.id }}
+            {{useTrans('product.order')}} #{{ order.id }}
           </h5>
           <div>
             <button
@@ -51,7 +51,7 @@
                   <Link
                     :href="`/admin-dashboard/orders/${order.id}/edit`"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >Edit</Link
+                    >{{useTrans('product.edit')}}</Link
                   >
                 </li>
                 <li>
@@ -59,13 +59,13 @@
                     href="#"
                     class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                     @click="deleteOrder(order.id)"
-                    >Delete</a
+                    >{{useTrans('product.delete')}}</a
                   >
                 </li>
               </ul>
               <div class="px-4 py-3 bg-blue-100 text-sm text-gray-900 dark:text-white">
-                <div class="font-medium truncate">Change</div>
-                <div class="font-medium truncate">Order Status</div>
+                <div class="font-medium truncate">{{useTrans('product.change')}}</div>
+                <div class="font-medium truncate">{{useTrans('product.order_status')}}</div>
               </div>
               <ul
                 class="py-2 text-sm text-gray-700 dark:text-gray-200"
@@ -81,7 +81,7 @@
                     <span
                       class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-yellow-900 dark:text-yellow-300 bg-yellow-100 text-yellow-800"
                     >
-                      unpaid</span
+                      {{useTrans('product.unpaid')}}</span
                     ></Link
                   >
                 </li>
@@ -95,7 +95,7 @@
                     <span
                       class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300 bg-green-100 text-green-800"
                     >
-                      paid</span
+                      {{useTrans('product.paid')}}</span
                     ></Link
                   >
                 </li>
@@ -109,7 +109,7 @@
                     <span
                       class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-blue-900 dark:text-blue-300 bg-blue-100 text-blue-800"
                     >
-                      shipped</span
+                      {{useTrans('product.shipped')}}</span
                     ></Link
                   >
                 </li>
@@ -123,7 +123,7 @@
                     <span
                       class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300 bg-green-900 text-white"
                     >
-                      delivered</span
+                      {{useTrans('product.delivered')}}</span
                     ></Link
                   >
                 </li>
@@ -137,7 +137,7 @@
                     <span
                       class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-red-900 dark:text-red-300 bg-red-600 text-white"
                     >
-                      cancelled</span
+                      {{useTrans('product.cancelled')}}</span
                     ></Link
                   >
                 </li>
@@ -148,18 +148,18 @@
 
         <div class="grid md:grid-cols-2 mt-10 gap-6">
           <div class="space-y-4">
-            <p class="font-medium text-blue-600 dark:text-gray-400">Shipping Adrress:</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400">{{useTrans('product.shipping_address')}}</p>
             <p>
-              <b class="font-semibold text-gray-900 dark:text-white">Name : </b
+              <b class="font-semibold text-gray-900 dark:text-white">{{useTrans('product.name')}} : </b
               >{{
                 JSON.parse(order.shipping_address)["first_name"] +
                 JSON.parse(order.shipping_address)["last_name"]
               }}<br />
               <b class="font-semibold text-gray-900 dark:text-white">Email : </b
               >{{ JSON.parse(order.shipping_address)["email"] }}<br />
-              <b class="font-semibold text-gray-900 dark:text-white">Phone Number : </b
+              <b class="font-semibold text-gray-900 dark:text-white"> {{useTrans('product.phone_number')}} : </b
               >{{ JSON.parse(order.shipping_address)["phone_number"] }}<br />
-              <b class="font-semibold text-gray-900 dark:text-white">Address : </b>
+              <b class="font-semibold text-gray-900 dark:text-white">{{useTrans('product.address')}} : </b>
               {{ JSON.parse(order.shipping_address)["address_line_1"] }}
               <br />
               {{ JSON.parse(order.shipping_address)["address_line_2"] }}<br />
@@ -168,27 +168,27 @@
               {{ JSON.parse(order.shipping_address)["country"] }}<br />
             </p>
 
-            <p class="font-medium text-blue-600 dark:text-gray-400">User Details:</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400">{{useTrans('product.user_details')}} :</p>
             <p>
-              <b class="font-semibold text-gray-900 dark:text-white">User ID : </b
+              <b class="font-semibold text-gray-900 dark:text-white">{{useTrans('product.user_id')}} : </b
               >{{ order.user_id }}<br />
-              <b class="font-semibold text-gray-900 dark:text-white">Name : </b
+              <b class="font-semibold text-gray-900 dark:text-white">{{useTrans('product.user_ name')}} : </b
               >{{ order.user.first_name + " " + order.user.last_name }}<br />
               <b class="font-semibold text-gray-900 dark:text-white">Email : </b
               >{{ order.user.email }}<br />
-              <b class="font-semibold text-gray-900 dark:text-white">Phone Number : </b
+              <b class="font-semibold text-gray-900 dark:text-white">{{useTrans('product.phone_number')}} : </b
               >{{ order.user.phone_number }}
             </p>
           </div>
           <div class="space-y-4">
             <p class="font-normal text-gray-700 dark:text-gray-400"></p>
-            <p class="font-medium text-blue-600 dark:text-gray-400">Order Items:</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400">{{useTrans('product.order_items')}}:</p>
 
             <div
               class="text-sm font-medium my-3 text-gray-500"
               v-if="JSON.parse(order.cart_content).length < 1"
             >
-              No Order Items
+                {{useTrans('product.no_order_items')}}
             </div>
 
             <div class="relative overflow-x-auto border rounded-lg my-2" v-else>
@@ -197,8 +197,8 @@
                   class="text-xs text-gray-700 uppercase bg-blue-50 dark:bg-gray-700 dark:text-gray-400"
                 >
                   <tr>
-                    <th scope="col" class="px-6 py-3">Product name</th>
-                    <th scope="col" class="px-6 py-3">Quantity</th>
+                    <th scope="col" class="px-6 py-3">{{useTrans('product.product_name')}}</th>
+                    <th scope="col" class="px-6 py-3">{{useTrans('product.quantity')}}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -223,12 +223,12 @@
 
             <p class="font-normal text-gray-700 dark:text-gray-400"></p>
             <div>
-              <p class="font-medium text-blue-600 dark:text-gray-400">Order Price:</p>
+              <p class="font-medium text-blue-600 dark:text-gray-400">{{useTrans('product.order_price')}}:</p>
               <p>{{ order.total_price }}</p>
             </div>
 
             <div>
-              <p class="font-medium text-blue-600 dark:text-gray-400">Order Status:</p>
+              <p class="font-medium text-blue-600 dark:text-gray-400">{{useTrans('product.order_status')}}:</p>
               <p class="my-2">
                 <span
                   class="text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
@@ -245,7 +245,7 @@
               </p>
             </div>
             <div>
-              <p class="font-medium text-blue-600 dark:text-gray-400">Payment Mode:</p>
+              <p class="font-medium text-blue-600 dark:text-gray-400">{{useTrans('product.payment_method')}}:</p>
               <p class="text-gray-900">{{ order.payment_mode }}</p>
             </div>
           </div>
@@ -269,8 +269,7 @@ export default {
       window.scrollTo(0, 0);
       this.deleteAlertOrder = true;
       this.orderId = orderId;
-      this.deleteAlertOrderText = `Deleting the order will permanently removed from the database. You can't recover the
-      order again. Are you sure about deleting?`;
+      this.deleteAlertOrderText = useTrans('product.are_you_sure');
       setTimeout(() => (this.deleteAlertOrder = false), 5000);
     },
     deleteOrderConfirm() {
@@ -286,6 +285,7 @@ import { onMounted, onUpdated } from "vue";
 import { initFlowbite } from "flowbite";
 import Breadcrump from "../../../Shared/AdminDashboardComponents/Breadcrump.vue";
 import AlertDelete from "../../../Shared/AdminDashboardComponents/AlertDelete.vue";
+import {useTrans} from "../../../composables/trans";
 onMounted(() => {
   initFlowbite();
 });

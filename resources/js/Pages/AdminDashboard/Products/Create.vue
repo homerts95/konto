@@ -113,16 +113,16 @@
                     </div>
                     <div class="grid gap-4 sm:grid-cols-2">
                       <FormInput
-                        :label="'Product Slug'"
-                        :name="'slug'"
+                        :label="useTrans('product.product_slug')"
+                        :name="useTrans('product.slug')"
                         :type="'text'"
                         v-model="productInfo.slug"
                         @change="changeToSlug()"
                         :error="errors.slug"
                       ></FormInput>
                       <FormInput
-                        :label="'Product Link'"
-                        :name="'link'"
+                        :label="useTrans('product.product_link')"
+                        :name="useTrans('product.link')"
                         :type="'text'"
                         :readOnly="`{domain-name}/products/${productInfo.slug}`"
                         :disabled="true"
@@ -134,7 +134,7 @@
                   <!-- product attributes table -->
                   <div>
                     <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                      Product Specifications/Attributes:
+                      {{useTrans('product.product_specifications_or_attributes')}}
                     </p>
 
                     <div>
@@ -142,7 +142,7 @@
                         class="text-sm font-medium my-3 text-gray-500"
                         v-if="Object.keys(productAttributes).length < 1"
                       >
-                        No Attributes
+                          {{useTrans('product.no_attributes')}}
                       </div>
 
                       <div class="relative overflow-x-auto border rounded-lg my-2" v-else>
@@ -153,8 +153,8 @@
                             class="text-xs text-gray-700 uppercase bg-blue-50 dark:bg-gray-700 dark:text-gray-400"
                           >
                             <tr>
-                              <th scope="col" class="px-6 py-3">Attribute Name</th>
-                              <th scope="col" class="px-6 py-3">Attribute Value</th>
+                              <th scope="col" class="px-6 py-3">{{useTrans('product.attribute_name')}}</th>
+                              <th scope="col" class="px-6 py-3">{{useTrans('product.attribute_value')}}</th>
                               <th scope="col" class="px-6 py-3"></th>
                             </tr>
                           </thead>
@@ -208,11 +208,11 @@
                           <label
                             for="attribute_label"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            >Attribute Label</label
+                            >{{useTrans('product.attribute_label')}}</label
                           >
                           <input
                             type="text"
-                            name="attribute_label"
+                            name="us'"
                             id="attribute_label"
                             v-model="newAttribute.attribute_label"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
@@ -383,6 +383,7 @@ import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadS
 import FormFileUploadMultiple from "../../../Shared/FormComponents/FormFileUploadMultiple.vue";
 import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

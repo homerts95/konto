@@ -12,7 +12,7 @@
                 <div>
                     <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-2">
                         <div class="pr-8 md:border-r">
-                            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Page Links:</p>
+                            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('page.page_links')}}:</p>
                             <!-- add product attributes  -->
                             <div>
                                 <div class="p-2" v-for="(link, index) in page_links" :key="index">
@@ -21,7 +21,7 @@
                                             <label
                                                 for="page_name"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                            >Page Name</label
+                                            >{{useTrans('page.page_name')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -36,7 +36,7 @@
                                             <label
                                                 for="page_link"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                            >Page Link</label
+                                            >{{useTrans('page.page_link')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -74,7 +74,7 @@
                                             <label
                                                 for="page_name"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                            >Page Name</label
+                                            >{{useTrans('page.page_name')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -89,7 +89,7 @@
                                             <label
                                                 for="page_link"
                                                 class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                                            >Page Link</label
+                                            >{{useTrans('page.page_link')}}</label
                                             >
                                             <input
                                                 type="text"
@@ -122,7 +122,7 @@
                         </div>
                         <div class="grid">
                             <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                                Social Links:
+                                {{useTrans('page.social_links')}} :
                             </p>
                             <div>
                                 <div class="p-2" v-for="(link, index) in social_links" :key="index">
@@ -154,7 +154,7 @@
                     <div class="flex items-center space-x-4">
                         <Button
                             @click.prevent="updateFooter()"
-                            :text="'Update Footer'"
+                            :text="useTrans('page.update_footer')"
                             :color="'blue'"
                         ></Button>
                     </div>
@@ -222,6 +222,7 @@ import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadS
 import FormInput from "../../../Shared/FormComponents/FormInput.vue";
 import FormCheckBox from "../../../Shared/FormComponents/FormCheckBox.vue";
 import FormSelect from "../../../Shared/FormComponents/FormSelect.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
     initFlowbite();

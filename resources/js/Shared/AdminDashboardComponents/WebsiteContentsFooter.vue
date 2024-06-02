@@ -9,7 +9,7 @@
       <div>
         <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-2">
           <div class="pr-8 md:border-r">
-            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Page Links:</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('footer.page_links')}}:</p>
             <!-- add product attributes  -->
             <div>
               <div class="p-2" v-for="(link, index) in pageLinks" :key="index">
@@ -18,7 +18,7 @@
                     <label
                       for="page_name"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >Page Name</label
+                      >{{useTrans('footer.page_name')}}</label
                     >
                     <input
                       type="text"
@@ -26,7 +26,7 @@
                       id="page_name"
                       v-model="link.pageName"
                       class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                      placeholder="Years/Staffs.."
+                      placeholder=""
                     />
                   </div>
                   <div class="col-span-6">
@@ -71,7 +71,7 @@
                     <label
                       for="page_name"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >Page Name</label
+                      >{{useTrans('footer.page_name')}}</label
                     >
                     <input
                       type="text"
@@ -86,7 +86,7 @@
                     <label
                       for="page_link"
                       class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                      >Page Link</label
+                      >{{useTrans('footer.page_link')}}</label
                     >
                     <input
                       type="text"
@@ -118,7 +118,7 @@
             </div>
           </div>
           <div class="grid">
-            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Social Links:</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('footer.social_link')}}:</p>
             <div>
               <div class="p-2" v-for="(link, index) in socialLinks" :key="index">
                 <div class="grid sm:grid-cols-12 gap-8">
@@ -149,7 +149,7 @@
         <div class="flex items-center space-x-4">
           <Button
             @click.prevent="updateFooter()"
-            :text="'Update Footer'"
+            :text="useTrans('footer.update_footer')"
             :color="'blue'"
           ></Button>
         </div>
@@ -213,6 +213,7 @@ import FormFileUploadSingle from "../FormComponents/FormFileUploadSingle.vue";
 
 import Button from "../FormComponents/Button.vue";
 import Errors from "../FormComponents/Errors.vue";
+import {useTrans} from "../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

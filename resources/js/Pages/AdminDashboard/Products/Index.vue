@@ -18,7 +18,7 @@
       <div class="my-2">
         <Button
           @click.prevent="router.visit('/admin-dashboard/products/create')"
-          :text="'+ Add Product'"
+          :text="useTrans('product.add_product')"
           :color="'blue'"
         ></Button>
       </div>
@@ -27,7 +27,7 @@
         class="bg-white dark:bg-gray-800 relative shadow-md rounded-lg border-2 border-gray-200"
       >
         <Filters
-          :searchPlaceHolder="'Search by Product ID, Name, Description..'"
+          :searchPlaceHolder="useTrans('product.search_by_product_id_name_description')"
           :filters="filters"
           :currentPage="products.current_page"
           :dataName="'products'"
@@ -67,8 +67,7 @@ export default {
       window.scrollTo(0, 0);
       this.deleteAlertProduct = true;
       this.productId = productId;
-      this.deleteAlertProductText = `Deleting the product will permanently removed from the database. You can't recover the
-      product again. Are you sure about deleting?`;
+      this.deleteAlertProductText = useTrans('are_you_sure');
       setTimeout(() => (this.deleteAlertProduct = false), 5000);
     },
     deleteProductConfirm() {
@@ -87,6 +86,7 @@ import TableProducts from "../../../Shared/Tables/TableProducts.vue";
 import PageNavigation from "../../../Shared/AdminDashboardComponents/PageNavigation.vue";
 import AlertDelete from "../../../Shared/AdminDashboardComponents/AlertDelete.vue";
 import Button from "../../../Shared/FormComponents/Button.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

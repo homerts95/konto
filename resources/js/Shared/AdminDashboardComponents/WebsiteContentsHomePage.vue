@@ -9,12 +9,12 @@
       <div>
         <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-2">
           <div class="pr-5">
-            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Hero Slides</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('footer.hero_slides')}}</p>
             <div class="grid gap-4">
               <FormFileUploadMultiple
                 @files-change="(files) => (hero_carousel = files)"
                 @files-delete="deleteHeroCarousel"
-                :label="'Upload Images'"
+                :label="useTrans('home.page_name')"
                 :oldImageUrls="oldHeroCarousel"
                 :deleteImageUrl="'/admin-dashboard/home-page-contents/1/deleteImage'"
                 :preserveStateData="'homePageContent'"
@@ -33,7 +33,7 @@
         <div class="flex items-center space-x-4">
           <Button
             @click.prevent="updateHomePageContent()"
-            :text="'Update Home Page'"
+            :text="useTrans('home.update_home_page')"
             :color="'blue'"
           ></Button>
         </div>
@@ -85,6 +85,7 @@ import FormFileUploadSingle from "../FormComponents/FormFileUploadSingle.vue";
 
 import Button from "../FormComponents/Button.vue";
 import Errors from "../FormComponents/Errors.vue";
+import {useTrans} from "../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

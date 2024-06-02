@@ -5,18 +5,18 @@
         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
-          <th scope="col" class="px-4 py-3">ID</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.id')}}</th>
           <th scope="col" class="px-4 py-3">Thumbnail</th>
-          <th scope="col" class="px-4 py-3">Name</th>
-          <th scope="col" class="px-4 py-3">Category</th>
-          <th scope="col" class="px-4 py-3">Price</th>
-          <th scope="col" class="px-4 py-3">Brand</th>
-          <th scope="col" class="px-4 py-3">Tag</th>
-          <th scope="col" class="px-8 py-3">Availability</th>
-          <th scope="col" class="px-4 py-3">Inventory</th>
-          <th scope="col" class="px-4 py-3">Created at</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.name')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.category')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.price')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.brand')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.tag')}}</th>
+          <th scope="col" class="px-8 py-3">{{useTrans('table.availability')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.inventory')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.created_at')}}</th>
           <th scope="col" class="px-4 py-3">
-            <span class="sr-only">Actions</span>
+            <span class="sr-only">{{useTrans('table.actions')}}</span>
           </th>
         </tr>
       </thead>
@@ -46,7 +46,7 @@
           </td>
           <td class="px-4 py-3">
             {{ product.price }}<br />
-            <p class="font-medium">Offer Price: {{ product.price_sale }}</p>
+            <p class="font-medium">{{useTrans('table.offer_price')}}: {{ product.price_sale }}</p>
           </td>
           <td class="px-4 py-3">
             {{ product.brand }}
@@ -108,7 +108,7 @@
                   <Link
                     :href="`/admin-dashboard/products/${product.id}/edit`"
                     class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >Edit</Link
+                    >{{useTrans('table.edit')}}</Link
                   >
                 </li>
               </ul>
@@ -117,7 +117,7 @@
                   href="#"
                   class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   @click="$emit('deleteProduct', product.id)"
-                  >Delete</a
+                  >{{useTrans('table.delete')}}</a
                 >
               </div>
             </div>
@@ -153,6 +153,7 @@ export default {
 <script setup>
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
+import {useTrans} from "../../composables/trans";
 onMounted(() => {
   initFlowbite();
 });

@@ -5,7 +5,7 @@
     <div class="mx-auto max-w-screen-xl">
       <!-- Start coding here -->
       <h1 class="text-xl text-gray-800 mb-2 font-poppins py-3 sm:py-2 font-medium">
-        Orders
+          {{useTrans('customer.orders')}}
       </h1>
 
       <div
@@ -13,7 +13,7 @@
       >
         <Filters
           :filters="filters"
-          :searchPlaceHolder="'Search by Order ID'"
+          :searchPlaceHolder="useTrans('customer.search_by_order_id')"
           :sendToUrl="'/dashboard'"
           :currentPage="orders.current_page"
           :dataName="'orders'"
@@ -52,6 +52,7 @@ import { initFlowbite } from "flowbite";
 import Filters from "../../../Shared/Filters/Filters.vue";
 import TableOrders from "../../../Shared/Tables/TableOrders.vue";
 import PageNavigation from "../../../Shared/AdminDashboardComponents/PageNavigation.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

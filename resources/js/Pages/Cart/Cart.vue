@@ -35,7 +35,7 @@
                   <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
                     <div class="flex items-start justify-between">
                       <DialogTitle class="text-lg font-medium text-gray-900"
-                        >Shopping cart</DialogTitle
+                       v-text="useTrans('cart.cart')" ></DialogTitle
                       >
                       <div class="ml-3 flex h-7 items-center">
                         <button
@@ -157,9 +157,8 @@
                           type="button"
                           class="font-medium text-blue-600 hover:text-blue-500"
                           @click="open = false"
-                        >
-                          Continue Shopping
-                          <span aria-hidden="true"> &rarr;</span>
+                        v-text="useTrans('cart.continue_shopping')" >
+
                         </button>
                       </p>
                     </div>
@@ -226,4 +225,6 @@ import {
 import { XMarkIcon } from "@heroicons/vue/24/outline";
 import { router } from "@inertiajs/vue3";
 import Button from "../../Shared/FormComponents/Button.vue";
+import {useTrans} from "../../composables/trans";
 </script>
+

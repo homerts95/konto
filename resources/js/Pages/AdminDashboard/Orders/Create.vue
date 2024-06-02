@@ -16,17 +16,17 @@
             <div class="grid gap-4 mb-4 grid-col-1 sm:grid-cols-3">
               <div class="pr-5 border-r col-span-2">
                 <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                  Shipping Address:
+                  {{useTrans('product.shipping_address')}}:
                 </p>
                 <div class="grid gap-4 sm:grid-cols-2">
                   <FormInput
-                    :label="'First Name'"
+                    :label="useTrans('product.first_name')"
                     :name="'first_name'"
                     :type="'text'"
                     v-model="orderInfoShippingAddress.first_name"
                   ></FormInput>
                   <FormInput
-                    :label="'last Name'"
+                    :label="useTrans('product.last_name')"
                     :name="'last_name'"
                     :type="'text'"
                     v-model="orderInfoShippingAddress.last_name"
@@ -40,7 +40,7 @@
                     v-model="orderInfoShippingAddress.email"
                   ></FormInput>
                   <FormInput
-                    :label="'Phone Number'"
+                    :label="useTrans('product.phone_number')"
                     :name="'phone_number'"
                     :type="'text'"
                     v-model="orderInfoShippingAddress.phone_number"
@@ -48,13 +48,13 @@
                 </div>
                 <div class="grid gap-4 sm:grid-cols-2">
                   <FormInput
-                    :label="'Address Line 1'"
+                    :label="useTrans('product.address1')"
                     :name="'address_line_1'"
                     :type="'text'"
                     v-model="orderInfoShippingAddress.address_line_1"
                   ></FormInput>
                   <FormInput
-                    :label="'Address Line 2'"
+                    :label="useTrans('product.address2')"
                     :name="'address_line_2'"
                     :type="'text'"
                     v-model="orderInfoShippingAddress.address_line_2"
@@ -62,13 +62,13 @@
                 </div>
                 <div class="grid gap-4 sm:grid-cols-2">
                   <FormInput
-                    :label="'City'"
+                    :label="useTrans('product.city')"
                     :name="'city'"
                     :type="'text'"
                     v-model="orderInfoShippingAddress.city"
                   ></FormInput>
                   <FormInput
-                    :label="'Pin code'"
+                    :label="useTrans('product.post_code')"
                     :name="'pin_code'"
                     :type="'text'"
                     v-model="orderInfoShippingAddress.pin_code"
@@ -76,7 +76,7 @@
                 </div>
                 <div class="grid gap-4 sm:grid-cols-2">
                   <FormInput
-                    :label="'Country'"
+                    :label="useTrans('product.country')"
                     :name="'country'"
                     :type="'text'"
                     v-model="orderInfoShippingAddress.country"
@@ -85,10 +85,10 @@
               </div>
               <div class="">
                 <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                  User Details:
+                  {{useTrans('product.user_details')}}:
                 </p>
                 <FormInput
-                  :label="'User ID'"
+                  :label="useTrans('product.user_id')"
                   :name="'user_id'"
                   :type="'text'"
                   :error="errors.user_id"
@@ -98,7 +98,7 @@
                   Order Status:
                 </p>
                 <FormSelect
-                  :label="'Change Order Status'"
+                  :label="useTrans('product.change_order_status')"
                   :name="'status'"
                   v-model="orderInfo.status"
                   :error="errors.status"
@@ -114,14 +114,14 @@
                 >
                 </FormSelect>
                 <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                  Payment Details:
+                  {{useTrans('product.payment_method')}}
                 </p>
                 <FormSelect
-                  :label="'Payment Method'"
+                  :label="useTrans('product.payment_method')"
                   :name="'payment_method'"
                   v-model="orderInfo.payment_mode"
                   :error="errors.payment_mode"
-                  :optionsArray="[{ value: 'cod' }, { value: 'stripe' }]"
+                  :optionsArray="[{ value: useTrans('product.cod') }, { value: useTrans('product.stripe') }]"
                   :optionName="'value'"
                   :optionValue="'value'"
                 ></FormSelect>
@@ -134,7 +134,7 @@
             <div class="flex items-center space-x-4">
               <Button
                 @click.prevent="createOrder()"
-                :text="'Create Order'"
+                :text="useTrans('product.create_order')"
                 :color="'blue'"
               ></Button>
             </div>
@@ -146,12 +146,12 @@
         class="relative p-4 bg-blue-100 border border-blue-100 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 sm:p-5 my-6"
       >
         <div class="bg-blue-100 px-3 rounded pb-4">
-          <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Order details:</p>
+          <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('product.order_details')}}:</p>
           <div>
             <label
               for="description"
               class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >Order Items</label
+              >{{useTrans('order_details')}}</label
             >
             <TableOrderContent :orderContent="orderContent"></TableOrderContent>
           </div>
@@ -164,13 +164,13 @@
               >
               <div class="grid gap-4 sm:grid-cols-2">
                 <FormInput
-                  :label="'Product ID'"
+                  :label="useTrans('product.product_id')"
                   :name="'product_id'"
                   :type="'number'"
                   v-model="newOrderItem.id"
                 ></FormInput>
                 <FormInput
-                  :label="'Product Name'"
+                  :label="useTrans('product.product_name')"
                   :name="'product_name'"
                   :type="'text'"
                   v-model="newOrderItem.name"
@@ -178,13 +178,13 @@
               </div>
               <div class="grid gap-4 sm:grid-cols-2">
                 <FormInput
-                  :label="'Product Price'"
+                  :label="useTrans('product.product_price')"
                   :name="'product_price'"
                   :type="'number'"
                   v-model="newOrderItem.price"
                 ></FormInput>
                 <FormInput
-                  :label="'Quantity'"
+                  :label="useTrans('product.qty')"
                   :name="'product_quantity'"
                   :type="'number'"
                   v-model="newOrderItem.quantity"
@@ -193,7 +193,7 @@
               <div class="justify-self-stretch col-span-2">
                 <Button
                   @click.prevent="addOrderItem()"
-                  :text="'Add Order Item'"
+                  :text="useTrans('product.add_order_item')"
                   :color="'blue'"
                 ></Button>
               </div>
@@ -201,10 +201,10 @@
             <div class="p-5 pb-0 flex flex-col justify-between">
               <div>
                 <label class="text-md font-medium text-gray-900"
-                  >Total Amount: {{ totalAmount }}</label
+                  >{{useTrans('product.total_amount')}}: {{ totalAmount }}</label
                 ><br />
                 <label class="text-md font-medium text-gray-900"
-                  >Total No. Items: {{ orderContent.length }}</label
+                  >{{useTrans('product.total_no_products')}}: {{ orderContent.length }}</label
                 ><br />
               </div>
 
@@ -213,7 +213,7 @@
                 <div class="flex items-center space-x-4">
                   <Button
                     @click.prevent="createOrder()"
-                    :text="'Create Order'"
+                    :text="useTrans('product.create_product')"
                     :color="'blue'"
                   ></Button>
                 </div>
@@ -281,7 +281,7 @@ export default {
       this.orderInfo.shipping_address = JSON.stringify(this.orderInfoShippingAddress);
       this.orderInfo.cart_content = JSON.stringify(this.orderContent);
       this.orderInfo.total_price = this.totalAmount;
-      this.orderInfo.session_id = "Manually created order";
+      this.orderInfo.session_id = useTrans('product.manually_created_order');
       this.form = useForm(this.orderInfo);
       console.log(this.orderInfo);
       this.form.post(`/admin-dashboard/orders`, {
@@ -302,6 +302,7 @@ import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
 
 import TableOrderContent from "../../../Shared/Tables/TableOrderContent.vue";
+import {useTrans} from "../../../composables/trans";
 onMounted(() => {
   initFlowbite();
 });

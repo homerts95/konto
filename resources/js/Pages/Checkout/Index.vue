@@ -13,14 +13,14 @@
               </p>
               <div class="grid gap-4 sm:grid-cols-2">
                 <FormInput
-                  :label="'First Name'"
+                  :label="useTrans('checkout.first_name')"
                   :name="'first_name'"
                   :type="'text'"
                   :error="errors.first_name"
                   v-model="orderInfoShippingAddress.first_name"
                 ></FormInput>
                 <FormInput
-                  :label="'last Name'"
+                  :label="useTrans('checkout.last_name')"
                   :name="'last_name'"
                   :type="'text'"
                   :error="errors.last_name"
@@ -36,7 +36,7 @@
                   v-model="orderInfoShippingAddress.email"
                 ></FormInput>
                 <FormInput
-                  :label="'Phone Number'"
+                  :label="useTrans('checkout.phone_number')"
                   :name="'phone_number'"
                   :type="'text'"
                   :error="errors.phone_number"
@@ -45,14 +45,14 @@
               </div>
               <div class="grid gap-4 sm:grid-cols-2">
                 <FormInput
-                  :label="'Address Line 1'"
+                  :label="useTrans('checkout.address_1')"
                   :name="'address_line_1'"
                   :type="'text'"
                   :error="errors.address_line_1"
                   v-model="orderInfoShippingAddress.address_line_1"
                 ></FormInput>
                 <FormInput
-                  :label="'Address Line 2'"
+                  :label="useTrans('checkout.address_2')"
                   :name="'address_line_2'"
                   :type="'text'"
                   :error="errors.address_line_2"
@@ -61,14 +61,14 @@
               </div>
               <div class="grid gap-4 sm:grid-cols-2">
                 <FormInput
-                  :label="'City'"
+                  :label="useTrans('checkout.city')"
                   :name="'city'"
                   :type="'text'"
                   :error="errors.city"
                   v-model="orderInfoShippingAddress.city"
                 ></FormInput>
                 <FormInput
-                  :label="'Pin code'"
+                  :label="useTrans('checkout.postal_code')"
                   :name="'pin_code'"
                   :type="'text'"
                   :error="errors.pin_code"
@@ -77,7 +77,7 @@
               </div>
               <div class="grid gap-4 sm:grid-cols-2">
                 <FormInput
-                  :label="'Country'"
+                  :label="useTrans('checkout.country')"
                   :name="'country'"
                   :type="'text'"
                   :error="errors.country"
@@ -99,12 +99,12 @@
                 >
                   <tr>
                     <th scope="col" class="px-6 py-3">
-                      <span class="sr-only">Image</span>
+                      <span class="sr-only">{{useTrans('checkout.image')}}</span>
                     </th>
-                    <th scope="col" class="px-6 py-3">Product</th>
-                    <th scope="col" class="px-6 py-3">Qty</th>
-                    <th scope="col" class="px-6 py-3">Price</th>
-                    <th scope="col" class="px-6 py-3">Action</th>
+                    <th scope="col" class="px-6 py-3">{{useTrans('checkout.product')}}</th>
+                    <th scope="col" class="px-6 py-3">{{useTrans('checkout.qty')}}</th>
+                    <th scope="col" class="px-6 py-3">{{useTrans('checkout.price')}}</th>
+                    <th scope="col" class="px-6 py-3">{{useTrans('checkout.actions')}}</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -129,7 +129,7 @@
                           class="inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
                           type="button"
                         >
-                          <span class="sr-only">Quantity button</span>
+                          <span class="sr-only">{{useTrans('checkout.qty-btn')}}</span>
                           <svg
                             class="w-4 h-4"
                             @click="quantityDown(cartItem.id)"
@@ -198,11 +198,11 @@
 
             <div class="p-5 col-span-2 bg-white rounded-lg shadow-md my-5">
               <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                Payment Methods:
+                  {{useTrans('checkout.paymenth_method')}}:
               </p>
               <div class="grid gap-4 sm:grid-cols-2">
                 <FormRadioButton
-                  :label="'Cash on Delivery(COD)'"
+                  :label="useTrans('checkout.cash_on_delivery')"
                   :name="'cash_on_delivery'"
                   :error="errors.payment_mode"
                   :checked="paymentMode === 'cod'"
@@ -211,7 +211,7 @@
                 >
                 </FormRadioButton>
                 <FormRadioButton
-                  :label="'Online Payment(Stripe)'"
+                  :label="useTrans('checkout.stripe')"
                   :name="'stripe'"
                   :error="errors.payment_mode"
                   :checked="paymentMode === 'stripe'"
@@ -221,7 +221,7 @@
                 >
                 </FormRadioButton>
                 <FormRadioButton
-                  :label="'Order on Whatsapp'"
+                  :label="useTrans('checkout.order_on_whats_up')"
                   :name="'whatsapp'"
                   :error="errors.payment_mode"
                   :checked="paymentMode === 'whatsapp'"
@@ -236,7 +236,7 @@
                 <div class="flex items-center space-x-4 mt-6">
                   <Button
                     @click.prevent="submitCheckout()"
-                    :text="'Complete Checkout'"
+                    :text="useTrans('checkout.complete_checkout')"
                     :color="'blue'"
                     :fullWidth="true"
                   ></Button>
@@ -313,4 +313,5 @@ import FormInput from "../../Shared/FormComponents/FormInput.vue";
 import Button from "../../Shared/FormComponents/Button.vue";
 import Errors from "../../Shared/FormComponents/Errors.vue";
 import FormRadioButton from "../../Shared/FormComponents/FormRadioButton.vue";
+import {useTrans} from "../../composables/trans";
 </script>

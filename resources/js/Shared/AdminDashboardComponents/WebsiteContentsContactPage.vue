@@ -9,31 +9,31 @@
       <div>
         <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-2">
           <div class="pr-5 md:border-r">
-            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Text Contents</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('contact.text_content')}}</p>
             <div class="grid gap-4">
               <FormInput
-                :label="'Heading'"
+                :label="useTrans('contact.heading')"
                 :name="'heading'"
                 :type="'text'"
-                :placeholder="'Page Heading'"
+                :placeholder="useTrans('contact.page_heading')"
                 v-model="contactPageContentInfo.contactHeading"
                 :error="this.contactPageContentsErrors.contactHeading"
               ></FormInput>
               <FormTextArea
-                :label="'Sub Heading'"
+                :label="useTrans('contact.sub_heading')"
                 :name="'sub_heading'"
                 v-model="contactPageContentInfo.contactSubHeading"
                 :row="'3'"
-                :placeholder="'Contact page text content'"
+                :placeholder="useTrans('contact.page_sub_heading_text')"
                 :error="this.contactPageContentsErrors.contactSubHeading"
               >
               </FormTextArea>
               <FormTextArea
-                :label="'Main Paragraph'"
+                :label="useTrans('contact.main_paragraph')"
                 :name="'text'"
                 v-model="contactPageContentInfo.contactText"
                 :row="'5'"
-                :placeholder="'Contact page text content'"
+                :placeholder="useTrans('contact.main_paragraph_text_content')"
                 :error="this.contactPageContentsErrors.contactText"
               >
               </FormTextArea>
@@ -46,13 +46,13 @@
               </p>
               <FormFileUploadSingle
                 @fileChange="(file) => (contactImage = file)"
-                :label="'Image'"
+                :label="useTrans('contact.image')"
                 :oldImageLink="oldContactImage"
                 :name="'contactImage'"
                 :error="this.contactPageContentsErrors.contactImage"
               ></FormFileUploadSingle>
               <FormInput
-                :label="'Phone Numbers'"
+                :label="useTrans('contact.phone_number')"
                 :name="'phone_numbers'"
                 :type="'text'"
                 :placeholder="''"
@@ -68,7 +68,7 @@
                 :error="this.contactPageContentsErrors.contactEmail"
               ></FormInput>
               <FormInput
-                :label="'Address'"
+                :label="useTrans('contact.address')"
                 :name="'address'"
                 :type="'text'"
                 :placeholder="''"
@@ -85,7 +85,7 @@
         <div class="flex items-center space-x-4">
           <Button
             @click.prevent="updateContactPageContent()"
-            :text="'Update Contact Page'"
+            :text="useTrans('contact.update_page')"
             :color="'blue'"
           ></Button>
         </div>
@@ -140,6 +140,7 @@ import FormFileUploadSingle from "../FormComponents/FormFileUploadSingle.vue";
 
 import Button from "../FormComponents/Button.vue";
 import Errors from "../FormComponents/Errors.vue";
+import {useTrans} from "../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

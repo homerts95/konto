@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-screen-xl px-1 lg:px-12 my-11 pb-11">
       <!-- Modal content -->
 
-      <Breadcrump :links="{ products: 'products', 'Edit Product': '' }"></Breadcrump>
+      <Breadcrump :links="{ products: 'products', 'Επεξεργασία προιόντος': '' }"></Breadcrump>
 
       <AlertDelete
         v-if="deleteAlertImage"
@@ -24,7 +24,7 @@
       >
         <!-- Modal header -->
         <ModalHeader
-          :heading="`Edit Product - #${product.id}`"
+          :heading="`Επεξεργασία προιόντος - #${product.id}`"
           :url="$page.url"
         ></ModalHeader>
 
@@ -37,11 +37,11 @@
                   <!-- product general details  -->
                   <div>
                     <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                      Product General Details:
+                      {{useTrans('product.product_general_details')}}
                     </p>
                     <div class="grid gap-4 sm:grid-cols-2">
                       <FormInput
-                        :label="'Product Name'"
+                        :label="useTrans('product.product_general_details')"
                         :name="'name'"
                         :type="'text'"
                         v-model="productInfo.name"
@@ -49,7 +49,7 @@
                         :error="errors.name"
                       ></FormInput>
                       <FormSelect
-                        :label="'Product Category'"
+                        :label="useTrans('product.product_category')"
                         :name="'category_id'"
                         :selected="productInfo.category_id"
                         v-model="productInfo.category_id"
@@ -62,7 +62,7 @@
                     </div>
                     <div class="grid gap-4 grid-cols-2 sm:grid-cols-4">
                       <FormInput
-                        :label="'Brand'"
+                        :label="useTrans('product.brand')"
                         :name="'brand'"
                         :type="'text'"
                         v-model="productInfo.brand"
@@ -83,14 +83,14 @@
                       >
                       </FormSelect>
                       <FormInput
-                        :label="'Inventory'"
+                        :label="useTrans('product.inventory')"
                         :name="'inventory'"
                         :type="'number'"
                         v-model="productInfo.inventory"
                         :error="errors.inventory"
                       ></FormInput>
                       <FormSelect
-                        :label="'Availability'"
+                        :label="useTrans('product.availability')"
                         :name="'availability'"
                         v-model="productInfo.availability"
                         :error="errors.availability"
@@ -105,23 +105,23 @@
                     </div>
                     <div class="grid gap-4 sm:grid-cols-2">
                       <FormInput
-                        :label="'Offer Text'"
+                        :label="useTrans('product.offer_text')"
                         :name="'offer_text'"
                         :type="'text'"
-                        :placeholder="'ex: Buy 1 Get One..'"
+                        :placeholder="''"
                         v-model="productInfo.offer_text"
                         :error="errors.offer_text"
                       ></FormInput>
                       <div class="grid gap-4 grid-col-2 sm:grid-cols-2">
                         <FormInput
-                          :label="'Sale price'"
+                          :label="useTrans('product.sale_price')"
                           :name="'price_sale'"
                           :type="'number'"
                           v-model="productInfo.price_sale"
                           :error="errors.price_sale"
                         ></FormInput>
                         <FormInput
-                          :label="'Price'"
+                          :label="useTrans('product.price')"
                           :name="'price'"
                           :type="'number'"
                           v-model="productInfo.price"
@@ -131,7 +131,7 @@
                     </div>
                     <div class="grid gap-4 sm:grid-cols-2">
                       <FormInput
-                        :label="'Product Slug'"
+                        :label="useTrans('product.product_slug')"
                         :name="'slug'"
                         :type="'text'"
                         v-model="productInfo.slug"
@@ -140,7 +140,7 @@
                         :error="errors.slug"
                       ></FormInput>
                       <FormInput
-                        :label="'Product Link'"
+                        :label="useTrans('product.product_link')"
                         :name="'link'"
                         :type="'text'"
                         :readOnly="`http://127.0.0.1:8000/products/${productInfo.slug}`"
@@ -153,7 +153,7 @@
                   <!-- product attributes table -->
                   <div>
                     <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                      Product Specifications/Attributes:
+                       {{useTrans('product.product_specifications_or_attributes')}}
                     </p>
 
                     <div>
@@ -161,7 +161,7 @@
                         class="text-sm font-medium my-3 text-gray-500"
                         v-if="productAttributes.length < 1"
                       >
-                        No Attributes
+                          {{useTrans('product.no_attributes')}}
                       </div>
 
                       <div class="relative overflow-x-auto border rounded-lg my-2" v-else>
@@ -172,8 +172,8 @@
                             class="text-xs text-gray-700 uppercase bg-blue-50 dark:bg-gray-700 dark:text-gray-400"
                           >
                             <tr>
-                              <th scope="col" class="px-6 py-3">Attribute Name</th>
-                              <th scope="col" class="px-6 py-3">Attribute Value</th>
+                              <th scope="col" class="px-6 py-3">{{useTrans('product.attribute_name')}}</th>
+                              <th scope="col" class="px-6 py-3">{{useTrans('product.attribute_value')}}</th>
                               <th scope="col" class="px-6 py-3"></th>
                             </tr>
                           </thead>
@@ -227,7 +227,7 @@
                           <label
                             for="attribute_label"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            >Attribute Label</label
+                            >{{useTrans('product.attribute_label')}}</label
                           >
                           <input
                             type="text"
@@ -259,7 +259,7 @@
                             @click.prevent="addProductAttribute()"
                             class="text-white w-full bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                           >
-                            Add
+                           {{useTrans('add')}}
                           </button>
                         </div>
                       </div>
@@ -269,10 +269,10 @@
                   <!-- product descriptions  -->
                   <div>
                     <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                      Product Descriptions:
+                      {{useTrans('product.product_description')}}
                     </p>
                     <FormTextArea
-                      :label="'Short Description'"
+                      :label="useTrans('product.product_description')"
                       :name="'short_description'"
                       v-model="productInfo.short_description"
                       :row="'5'"
@@ -295,7 +295,7 @@
                 <div class="grid sm:col-span-2">
                   <div>
                     <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                      Product Images:
+                     {{useTrans('product.product_image')}}
                     </p>
 
                     <FormFileUploadSingle
@@ -309,7 +309,7 @@
                     <FormFileUploadMultiple
                       @files-change="(files) => (more_images = files)"
                       @files-delete="deleteMoreImage"
-                      :label="'More Images'"
+                      :label="useTrans('product.more_images')"
                       :oldImageUrls="oldMoreImages"
                       :name="'more_images'"
                       :error="errors.more_images"
@@ -326,12 +326,12 @@
             <div class="flex items-center space-x-4">
               <Button
                 @click.prevent="updateProduct()"
-                :text="'Edit Product'"
+                :text="useTrans('product.update_product')"
                 :color="'blue'"
               ></Button>
               <Button
                 @click.prevent="deleteProduct()"
-                :text="'Delete Product'"
+                :text="useTrans('product.delete_product')"
                 :disableFlash="true"
                 :color="'red'"
               ></Button>
@@ -400,8 +400,7 @@ export default {
     deleteProduct() {
       window.scrollTo(0, 0);
       this.deleteAlertProduct = true;
-      this.deleteAlertProductText = `Deleting the Product will permanently removed from the database. You can't recover the
-      product again. Are you sure about deleting?`;
+      this.deleteAlertProductText = useTrans('are_you_sure');
       setTimeout(() => (this.deleteAlertProduct = false), 5000);
     },
     deleteProductConfirm() {
@@ -457,6 +456,7 @@ import FormFileUploadMultiple from "../../../Shared/FormComponents/FormFileUploa
 import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
 import AlertDelete from "../../../Shared/AdminDashboardComponents/AlertDelete.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

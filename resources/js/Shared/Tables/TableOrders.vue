@@ -5,15 +5,15 @@
         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
-          <th scope="col" class="px-4 py-3">ID</th>
-          <th scope="col" class="px-4 py-3">Date</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.id')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.date')}}</th>
           <th scope="col" class="px-4 py-3" v-if="orders.data[0].user">User</th>
-          <th scope="col" class="px-6 py-3">Shipping Address</th>
-          <th scope="col" class="px-6 py-3">Items</th>
-          <th scope="col" class="px-4 py-3">Total Price</th>
-          <th scope="col" class="px-4 py-3">Order Status</th>
+          <th scope="col" class="px-6 py-3">{{useTrans('table.shipping_address')}}</th>
+          <th scope="col" class="px-6 py-3">{{useTrans('table.items')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.price')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.order_status')}}</th>
           <th scope="col" class="px-4 py-3" v-if="orders.data[0].user">
-            <span class="sr-only">Actions</span>
+            <span class="sr-only">{{useTrans('table.actions')}}</span>
           </th>
         </tr>
       </thead>
@@ -158,6 +158,7 @@ export default {
 <script setup>
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
+import {useTrans} from "../../composables/trans";
 onMounted(() => {
   initFlowbite();
 });

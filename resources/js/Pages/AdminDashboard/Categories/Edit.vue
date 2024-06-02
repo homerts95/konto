@@ -3,7 +3,7 @@
     <div class="mx-auto max-w-screen-xl px-1 lg:px-12 my-11 pb-11">
       <!-- Modal content -->
 
-      <Breadcrump :links="{ categories: 'categories', 'Edit Category': '' }"></Breadcrump>
+      <Breadcrump :links="{ categories: 'categories', 'Επεξεργασία κατηγορίας': '' }"></Breadcrump>
       <AlertDelete
         v-if="deleteAlertCategory"
         @close="deleteAlertCategory = false"
@@ -16,7 +16,7 @@
       >
         <!-- Modal header -->
         <ModalHeader
-          :heading="`Edit Category - #${category.id}`"
+          :heading="`${useTrans()} - #${category.id}`"
           :url="$page.url"
         ></ModalHeader>
         <!-- Modal body -->
@@ -25,11 +25,11 @@
             <div class="grid gap-4 mb-4 grid-cols-1 sm:grid-cols-2">
               <div class="pr-5 border-r">
                 <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                  Category Details:
+                  {{useTrans('category.category_details')}}:
                 </p>
                 <div class="grid gap-4">
                   <FormInput
-                    :label="'Category Name'"
+                    :label="useTrans('category.category_name')"
                     :name="'category_name'"
                     :type="'text'"
                     :error="errors.name"
@@ -37,7 +37,7 @@
                     v-model="categoryInfo.name"
                   ></FormInput>
                   <FormInput
-                    :label="'Category Slug'"
+                    :label="useTrans('category.category_slug')"
                     :name="'category_slug'"
                     :type="'text'"
                     :error="errors.slug"
@@ -52,7 +52,7 @@
 
                   <FormFileUploadSingle
                     @fileChange="(file) => (this.img = file[0])"
-                    :label="'Image'"
+                    :label="useTrans('category.category_image')"
                     :oldImageLink="this.categoryInfo.category_image_url"
                     :name="'image'"
                     :error="errors.img"
@@ -67,12 +67,12 @@
             <div class="flex items-center space-x-4">
               <Button
                 @click.prevent="updateCategory()"
-                :text="'Update Category'"
+                :text="useTrans('category.update_category')"
                 :color="'blue'"
               ></Button>
               <Button
                 @click.prevent="deleteCategory()"
-                :text="'Delete Category'"
+                :text="useTrans('category.delete_category')"
                 :disableFlash="true"
                 :color="'red'"
               ></Button>
@@ -120,8 +120,7 @@ export default {
     deleteCategory() {
       window.scrollTo(0, 0);
       this.deleteAlertCategory = true;
-      this.deleteAlertCategoryText = `Deleting the category will permanently removed from the database. You can't recover the
-        category again. Are you sure about deleting?`;
+      this.deleteAlertCategoryText = useTrans('are_you_sure');
       setTimeout(() => (this.deleteAlertCategory = false), 5000);
     },
     deleteCategoryConfirm() {
@@ -156,6 +155,7 @@ import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
 import AlertDelete from "../../../Shared/AdminDashboardComponents/AlertDelete.vue";
 import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadSingle.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

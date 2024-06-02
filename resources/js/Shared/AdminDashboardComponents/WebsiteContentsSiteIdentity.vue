@@ -9,10 +9,10 @@
       <div>
         <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-3">
           <div class="pr-5 md:border-r">
-            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Site Info</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('siteId.info')}}</p>
             <div class="grid gap-4">
               <FormInput
-                :label="'Site Name'"
+                :label="useTrans('siteId.site_name')"
                 :name="'site_name'"
                 :type="'text'"
                 :placeholder="'Lara Commerce'"
@@ -20,18 +20,18 @@
                 :error="siteIdentityErrors.siteName"
               ></FormInput>
               <FormInput
-                :label="'Site Domain'"
+                :label="useTrans('siteId.domain')"
                 :name="'site_domain'"
                 :type="'text'"
-                :placeholder="'laracommerce.com'"
+                :placeholder="'joeDoe.com'"
                 v-model="siteIdentityInfo.siteDomain"
                 :error="siteIdentityErrors.siteDomain"
               ></FormInput>
               <FormInput
-                :label="'Site Email'"
+                :label="useTrans('siteId.site_email')"
                 :name="'site_email'"
                 :type="'text'"
-                :placeholder="'official@laracommerce.com'"
+                :placeholder="'panos@gmail.com'"
                 v-model="siteIdentityInfo.siteEmail"
                 :error="siteIdentityErrors.siteEmail"
               ></FormInput>
@@ -39,22 +39,22 @@
           </div>
           <div class="pr-5 md:border-r">
             <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-              Site Owner Info
+              {{useTrans('siteId.site_owner_info')}}
             </p>
 
             <div class="grid gap-4">
               <FormInput
-                :label="'Site Owner Name'"
+                :label="useTrans('siteId.site_owner_name')"
                 :name="'site_owner_name'"
                 :type="'text'"
                 v-model="siteIdentityInfo.siteOwnerName"
                 :error="siteIdentityErrors.siteOwnerName"
               ></FormInput>
               <FormInput
-                :label="'Site Owner Email'"
+                :label="useTrans('siteId.site_owner_email')"
                 :name="'site_owner_email'"
                 :type="'email'"
-                :placeholder="'admin@laracommerce.com'"
+                :placeholder="'joe@doe.com'"
                 v-model="siteIdentityInfo.siteOwnerEmail"
                 :error="siteIdentityErrors.siteOwnerEmail"
               ></FormInput>
@@ -65,7 +65,7 @@
 
             <div class="grid gap-4">
               <FormCheckBox
-                :label="'Enable/Edit Stripe Payment'"
+                :label="useTrans('siteId.enable_or_edit_stripe_payment')"
                 :name="'enable_stripe'"
                 :checked="siteIdentityInfo.enable_stripe"
                 v-model="siteIdentityInfo.enable_stripe"
@@ -81,7 +81,7 @@
                 :error="siteIdentityErrors.stripe_secret_key"
               ></FormInput>
               <FormSelectVue
-                :label="'Choose currency'"
+                :label="useTrans('siteId.choose_currency')"
                 :name="'currency'"
                 v-model="siteIdentityInfo.currency"
                 :selected="siteIdentityInfo.currency"
@@ -96,7 +96,7 @@
             <div>
               <FormFileUploadSingle
                 @fileChange="(file) => (logoImage = file)"
-                :label="'Logo Image'"
+                :label=useTrans('siteId.logo_image')
                 :oldImageLink="oldLogoImage"
                 :name="'logoImage'"
                 :error="siteIdentityErrors.logoImage"
@@ -111,7 +111,7 @@
         <div class="flex items-center space-x-4">
           <Button
             @click.prevent="updateSiteIdentity()"
-            :text="'Update Site Identity'"
+            :text="useTrans('siteId.update')"
             :color="'blue'"
           ></Button>
         </div>
@@ -180,6 +180,7 @@ import Errors from "../FormComponents/Errors.vue";
 import FormCheckBox from "../FormComponents/FormCheckBox.vue";
 
 import FormSelectVue from "../FormComponents/FormSelect.vue";
+import {useTrans} from "../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

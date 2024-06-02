@@ -22,7 +22,7 @@ class SiteIdentityFactory extends Factory
             'site_email' => 'kontonios@gmail.com',
             'site_owner_name' => 'Panos vlassopoulos',
             'site_owner_email' => 'P.kontonios@gmail.com',
-            'logo_image' => 'https://laravuetail.com/storage/images/ecommerce-logo.svg',
+            'logo_image' => 'https://www.svgrepo.com/show/424929/logo-raspberry-pi-open-source.svg',
             'banner_text' => '',
         ];
     }

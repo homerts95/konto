@@ -14,29 +14,29 @@
         <div>
           <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-3">
             <div class="pr-5 md:border-r">
-              <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Site Info</p>
+              <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('page.site_info')}}</p>
               <div class="grid gap-4">
                 <FormInput
-                  :label="'Site Name'"
+                  :label="useTrans('page.site_name')"
                   :name="'site_name'"
                   :type="'text'"
-                  :placeholder="'Lara Commerce'"
+                  :placeholder="useTrans('page.panos')"
                   v-model="siteIdentityInfo.site_name"
                   :error="$page.props.errors.site_name"
                 ></FormInput>
                 <FormInput
-                  :label="'Site Domain'"
+                  :label="useTrans('page.site_domain')"
                   :name="'site_domain'"
                   :type="'text'"
-                  :placeholder="'laracommerce.com'"
+                  :placeholder="useTrans('page.url')"
                   v-model="siteIdentityInfo.site_domain"
                   :error="$page.props.errors.site_domain"
                 ></FormInput>
                 <FormInput
-                  :label="'Site Email'"
+                  :label="useTrans('page.site_website')"
                   :name="'site_email'"
                   :type="'text'"
-                  :placeholder="'official@laracommerce.com'"
+                  :placeholder="'panos@gmail.com'"
                   v-model="siteIdentityInfo.site_email"
                   :error="$page.props.errors.site_email"
                 ></FormInput>
@@ -44,22 +44,22 @@
             </div>
             <div class="pr-5 md:border-r">
               <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                Site Owner Info
+                  {{ useTrans('page.site_owner_name') }}
               </p>
 
               <div class="grid gap-4">
                 <FormInput
-                  :label="'Site Owner Name'"
+                  :label="useTrans('page.site_owner_name')"
                   :name="'site_owner_name'"
                   :type="'text'"
                   v-model="siteIdentityInfo.site_owner_name"
                   :error="$page.props.errors.site_owner_name"
                 ></FormInput>
                 <FormInput
-                  :label="'Site Owner Email'"
+                  :label="useTrans('page.site_owner_email')"
                   :name="'site_owner_email'"
                   :type="'email'"
-                  :placeholder="'admin@laracommerce.com'"
+                  :placeholder="'panos@gmail.com'"
                   v-model="siteIdentityInfo.site_owner_email"
                   :error="$page.props.errors.site_owner_email"
                 ></FormInput>
@@ -69,16 +69,16 @@
               <div>
                 <FormFileUploadSingle
                   @fileChange="(file) => (logo_image = file[0])"
-                  :label="'Logo Image'"
+                  :label="useTrans('page.logo')"
                   :oldImageLink="oldLogoImage"
                   :name="'logoImage'"
                   :error="$page.props.errors.logo_image"
                 ></FormFileUploadSingle>
                 <FormInput
-                  :label="'Banner Text'"
+                  :label="useTrans('page.text')"
                   :name="'banner_text'"
                   :type="'text'"
-                  :placeholder="'Enter Banner Text'"
+                  :placeholder="useTrans('page.textg')"
                   v-model="siteIdentityInfo.banner_text"
                   :error="$page.props.errors.banner_text"
                 ></FormInput>
@@ -92,7 +92,7 @@
           <div class="flex items-center space-x-4">
             <Button
               @click.prevent="updateSiteIdentity()"
-              :text="'Update Site Identity'"
+              :text="useTrans('page.update')"
               :color="'blue'"
             ></Button>
           </div>
@@ -166,6 +166,7 @@ import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadS
 import FormInput from "../../../Shared/FormComponents/FormInput.vue";
 import FormCheckBox from "../../../Shared/FormComponents/FormCheckBox.vue";
 import FormSelect from "../../../Shared/FormComponents/FormSelect.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

@@ -19,48 +19,48 @@
       <div>
         <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-2">
           <div class="pr-5 md:border-r">
-            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Text Contents</p>
+            <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('customPage.phone_number')}}</p>
             <div class="grid gap-4">
               <FormInput
-                :label="'Page Name'"
+                :label="useTrans('customPage.page_name')"
                 :name="'name'"
                 :type="'text'"
-                :placeholder="'Page Name'"
+                :placeholder="useTrans('customPage.page_name')"
                 v-model="customPageContentInfo.name"
                 @change="changeNameToSlug()"
                 :error="customPageContentsErrors.name"
               ></FormInput>
               <FormInput
-                :label="'Page Slug'"
+                :label="useTrans('customPage.page_slug')"
                 :name="'slug'"
                 :type="'text'"
                 @change="changeToSlug()"
-                :placeholder="'page_slug'"
+                :placeholder="useTrans('customPage.page_slug')"
                 v-model="customPageContentInfo.slug"
                 :error="customPageContentsErrors.slug"
               ></FormInput>
               <FormInput
-                :label="'Page Link'"
+                :label="useTrans('customPage.page_link')"
                 :name="'link'"
                 :type="'text'"
-                :placeholder="'page_slug'"
+                :placeholder="useTrans('customPage.page_link')"
                 :readOnly="`{domain-name}/products/${customPageContentInfo.slug}`"
                 :disabled="true"
               ></FormInput>
               <FormInput
-                :label="'Title'"
+                :label="useTrans('customPage.page_title')"
                 :name="'title'"
                 :type="'text'"
-                :placeholder="'Page Title'"
+                :placeholder="useTrans('customPage.page_title')"
                 v-model="customPageContentInfo.title"
                 :error="customPageContentsErrors.title"
               ></FormInput>
               <FormTextArea
-                :label="'Sub title'"
+                :label="useTrans('customPage.page_subheading')"
                 :name="'sub_title'"
                 v-model="customPageContentInfo.sub_title"
                 :row="'3'"
-                :placeholder="'Sub title'"
+                :placeholder="useTrans('customPage.page_subheading')"
                 :error="customPageContentsErrors.sub_title"
               >
               </FormTextArea>
@@ -73,7 +73,7 @@
               </p>
               <FormFileUploadSingle
                 @fileChange="(file) => (image = file[0])"
-                :label="'Image'"
+                :label="useTrans('customPage.image')"
                 :oldImageLink="oldImage"
                 :name="'image'"
                 :error="customPageContentsErrors.image"
@@ -81,7 +81,7 @@
             </div>
             <FormTextEditor
               v-model="customPageContentInfo.content"
-              :label="'Main Content'"
+              :label="useTrans('customPage.main_content')"
               :name="'main_content'"
               :error="customPageContentsErrors.content"
             ></FormTextEditor>
@@ -94,19 +94,19 @@
         <div class="flex items-center space-x-4">
           <Button
             @click.prevent="updateCustomPageContent()"
-            :text="'Update Page'"
+            :text="useTrans('customPage.update_page')"
             :disableFlash="false"
             :color="'blue'"
           ></Button>
           <Button
             @click.prevent="visitPage()"
-            :text="'Visit Page'"
+            :text="useTrans('customPage.visit_page')"
             :color="'blue'"
             :disableFlash="true"
           ></Button>
           <Button
             @click.prevent="deletePage(customPageContentInfo.id)"
-            :text="'Delete Page'"
+            :text="useTrans('customPage.delete_page')"
             :color="'red'"
             :disableFlash="true"
           ></Button>
@@ -154,8 +154,7 @@ export default {
       window.scrollTo(0, 0);
       this.deleteAlertPage = true;
       this.deleteAlertPageId = id;
-      this.deleteAlertPageText = `Deleting the Page will permanently removed from the database. You can't recover the
-      page again. Are you sure about deleting?`;
+      this.deleteAlertPageText = useTrans('are_you_sure');
       setTimeout(() => (this.deleteAlertPage = false), 5000);
     },
     deletePageConfirm() {
@@ -209,6 +208,7 @@ import Errors from "../FormComponents/Errors.vue";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
 import AlertDelete from "./AlertDelete.vue";
+import {useTrans} from "../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

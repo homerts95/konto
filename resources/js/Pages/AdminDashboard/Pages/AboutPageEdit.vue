@@ -13,30 +13,30 @@
           <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-2">
             <div class="pr-5 md:border-r">
               <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                Text Contents
+                  {{useTrans('page.text_contents')}}
               </p>
               <div class="grid gap-4">
                 <FormInput
-                  :label="'Heading'"
+                  :label="useTrans('page.heading')"
                   :name="'heading'"
                   :type="'text'"
-                  :placeholder="'Page Heading'"
+                  :placeholder="useTrans('page.heading')"
                   v-model="aboutPageContentInfo.about_heading"
                   :error="$page.props.errors.about_heading ?? ''"
                 ></FormInput>
                 <FormTextArea
-                  :label="'Sub Heading'"
+                  :label="useTrans('page.sub_heading')"
                   :name="'sub_heading'"
                   v-model="aboutPageContentInfo.about_sub_heading"
                   :row="'3'"
-                  :placeholder="'About page text content'"
+                  :placeholder="useTrans('page.sub_heading')"
                   :error="$page.props.errors.about_sub_heading ?? ''"
                 >
                 </FormTextArea>
 
                 <FormTextEditor
                   v-model="aboutPageContentInfo.about_text"
-                  :label="'Main Paragraph'"
+                  :label="useTrans('page.main_paragraph')"
                   :name="'text'"
                   :error="$page.props.errors.about_text ?? ''"
                 ></FormTextEditor>
@@ -45,11 +45,11 @@
             <div class="grid">
               <div>
                 <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                  About Page:
+                    {{ useTrans('page.about_page')  }} :
                 </p>
                 <FormFileUploadSingle
                   @fileChange="(file) => (about_image = file[0])"
-                  :label="'Image'"
+                  :label="useTrans('page.image')"
                   :oldImageLink="oldAboutImage"
                   :name="'aboutImage'"
                   :error="$page.props.errors.about_image ?? ''"
@@ -58,7 +58,7 @@
                 <!-- Status table -->
                 <div>
                   <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                    Statuses:
+                    {{useTrans('pages.statuses')}}:
                   </p>
 
                   <div>
@@ -66,7 +66,7 @@
                       class="text-sm font-medium my-3 text-gray-500"
                       v-if="about_statuses.length < 1"
                     >
-                      No Status Values
+                        {{useTrans('pages.no_status_available')}}
                     </div>
 
                     <div class="relative overflow-x-auto border rounded-lg my-2" v-else>
@@ -77,8 +77,8 @@
                           class="text-xs text-gray-700 uppercase bg-blue-50 dark:bg-gray-700 dark:text-gray-400"
                         >
                           <tr>
-                            <th scope="col" class="px-6 py-3">Status Name</th>
-                            <th scope="col" class="px-6 py-3">Status Value</th>
+                            <th scope="col" class="px-6 py-3">{{useTrans('pages.status_name')}}</th>
+                            <th scope="col" class="px-6 py-3">{{useTrans('pages.status_value')}}</th>
                             <th scope="col" class="px-6 py-3"></th>
                           </tr>
                         </thead>
@@ -132,7 +132,7 @@
                         <label
                           for="status_name"
                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                          >Status Name</label
+                          >{{useTrans('pages.status_name')}}</label
                         >
                         <input
                           type="text"
@@ -140,14 +140,14 @@
                           id="status_name"
                           v-model="statusName"
                           class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                          placeholder="Years/Staffs.."
+                          placeholder=""
                         />
                       </div>
                       <div class="col-span-5">
                         <label
                           for="status_value"
                           class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                          >Status Value</label
+                          >{{useTrans('pages.status_value')}}</label
                         >
                         <input
                           type="text"
@@ -180,7 +180,7 @@
           <div class="flex items-center space-x-4">
             <Button
               @click.prevent="updateAboutPageContent()"
-              :text="'Update About Page'"
+              :text="useTrans('pages.update_about_page')"
               :color="'blue'"
             ></Button>
           </div>
@@ -259,6 +259,7 @@ import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadS
 import FormTextArea from "../../../Shared/FormComponents/FormTextArea.vue";
 import FormInput from "../../../Shared/FormComponents/FormInput.vue";
 import FormTextEditor from "../../../Shared/FormComponents/FormTextEditor.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

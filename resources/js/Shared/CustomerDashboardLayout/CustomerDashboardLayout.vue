@@ -17,7 +17,7 @@
             type="button"
             class="inline-flex items-center p-2 mt-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           >
-            <span class="sr-only">Open sidebar</span>
+            <span class="sr-only">{{useTrans('customer.open')}}</span>
             <svg
               class="w-6 h-6"
               aria-hidden="true"
@@ -63,7 +63,7 @@
                       />
                     </svg>
 
-                    <span class="ml-3">User Info</span>
+                    <span class="ml-3">{{useTrans('customer.user_info')}}</span>
                   </Link>
                 </li>
                 <li>
@@ -94,7 +94,7 @@
                       />
                     </svg>
 
-                    <span class="flex-1 ml-3 whitespace-nowrap">Orders</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">{{useTrans('customer.user_info')}}</span>
                   </Link>
                 </li>
                 <li>
@@ -120,7 +120,7 @@
                       />
                     </svg>
 
-                    <span class="flex-1 ml-3 whitespace-nowrap">Address</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">{{useTrans('customer.address')}}</span>
                   </Link>
                 </li>
                 <li>
@@ -142,7 +142,7 @@
                       />
                     </svg>
 
-                    <span class="flex-1 ml-3 whitespace-nowrap">Logout</span>
+                    <span class="flex-1 ml-3 whitespace-nowrap">{{useTrans('customer.logout')}}</span>
                   </Link>
                 </li>
               </ul>
@@ -161,4 +161,5 @@
 </template>
 <script setup>
 import PublicPagesLayout from "../PublicPagesLayout/PublicPagesLayout.vue";
+import {useTrans} from "../../composables/trans";
 </script>

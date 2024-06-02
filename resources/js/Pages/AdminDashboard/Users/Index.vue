@@ -5,7 +5,7 @@
     <div class="mx-auto max-w-screen-xl px-1 lg:px-12 pb-10">
       <!-- Start coding here -->
       <h1 class="text-2xl text-gray-800 mb-2 font-poppins py-3 sm:py-2 font-medium">
-        Users
+        {{ useTrans('user.users')}}
       </h1>
 
       <AlertDelete
@@ -19,7 +19,7 @@
       <div class="my-2">
         <Button
           @click.prevent="router.visit('/admin-dashboard/users/create')"
-          :text="'+ Add User'"
+          :text="useTrans('user.add_user')"
           :color="'blue'"
         ></Button>
       </div>
@@ -37,7 +37,7 @@
       >
         <Filters
           :filters="filters"
-          :searchPlaceHolder="'Search by User ID/Name/Email/Phone Number..'"
+          :searchPlaceHolder="useTrans('search_by_user_id_name_email_phone_number')"
           :currentPage="users.current_page"
           :dataName="'users'"
           :enableFilters="{
@@ -72,8 +72,7 @@ export default {
       window.scrollTo(0, 0);
       this.deleteAlertUser = true;
       this.userId = userId;
-      this.deleteAlertUserText = `Deleting the user will permanently removed from the database. You can't recover the
-        user again. Are you sure about deleting?`;
+      this.deleteAlertUserText = useTrans('are_you_sure');
       setTimeout(() => (this.deleteAlertUser = false), 5000);
     },
     deleteUserConfirm() {
@@ -92,6 +91,7 @@ import TableUsers from "../../../Shared/Tables/TableUsers.vue";
 import PageNavigation from "../../../Shared/AdminDashboardComponents/PageNavigation.vue";
 import AlertDelete from "../../../Shared/AdminDashboardComponents/AlertDelete.vue";
 import Button from "../../../Shared/FormComponents/Button.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

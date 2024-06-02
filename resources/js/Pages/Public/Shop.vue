@@ -1,5 +1,5 @@
 <template>
-  <ProductShopLayout :title="'Shop'">
+  <ProductShopLayout :title="useTrans('shop.shop')">
     <ProductsIndex :products="products" :cols="3"></ProductsIndex>
   </ProductShopLayout>
 </template>
@@ -11,4 +11,5 @@ export default {
 <script setup>
 import ProductShopLayout from "../../Shared/ProductLayouts/ProductShopLayout.vue";
 import ProductsIndex from "./Products/ProductsIndex.vue";
+import {useTrans} from "../../composables/trans";
 </script>

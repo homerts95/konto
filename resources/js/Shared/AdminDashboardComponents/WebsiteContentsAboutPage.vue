@@ -12,26 +12,26 @@
             <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Text Contents</p>
             <div class="grid gap-4">
               <FormInput
-                :label="'Heading'"
+                  :placeholder="useTrans('about.page_heading')"
                 :name="'heading'"
                 :type="'text'"
-                :placeholder="'Page Heading'"
+                :placeholder="useTrans('about.page_heading')"
                 v-model="aboutPageContentInfo.aboutHeading"
                 :error="this.aboutPageContentsErrors.aboutHeading"
               ></FormInput>
               <FormTextArea
-                :label="'Sub Heading'"
+                  :placeholder="useTrans('about.sub_heading')"
                 :name="'sub_heading'"
                 v-model="aboutPageContentInfo.aboutSubHeading"
                 :row="'3'"
-                :placeholder="'About page text content'"
+                :placeholder="useTrans('about.page_sub_heading_context')"
                 :error="this.aboutPageContentsErrors.aboutSubHeading"
               >
               </FormTextArea>
 
               <FormTextEditor
                 v-model="aboutPageContentInfo.aboutText"
-                :label="'Main Paragraph'"
+                :label= "useTrans('about.main_paragraph')"
                 :name="'text'"
                 :error="this.aboutPageContentsErrors.aboutText"
               ></FormTextEditor>
@@ -53,10 +53,10 @@
           </div>
           <div class="grid">
             <div>
-              <p class="font-medium text-blue-600 dark:text-gray-400 my-4">About Page:</p>
+              <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('about.about_page')}}:</p>
               <FormFileUploadSingle
                 @fileChange="(file) => (aboutImage = file)"
-                :label="'Image'"
+                :label="useTrans('about.image')"
                 :oldImageLink="oldAboutImage"
                 :name="'aboutImage'"
                 :error="this.aboutPageContentsErrors.aboutImage"
@@ -64,14 +64,14 @@
 
               <!-- Status table -->
               <div>
-                <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Statuses:</p>
+                <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('about.statuses')}}:</p>
 
                 <div>
                   <div
                     class="text-sm font-medium my-3 text-gray-500"
                     v-if="aboutStatuses.length < 1"
                   >
-                    No Status Values
+                      {{useTrans('about.no_status')}}
                   </div>
 
                   <div class="relative overflow-x-auto border rounded-lg my-2" v-else>
@@ -82,8 +82,8 @@
                         class="text-xs text-gray-700 uppercase bg-blue-50 dark:bg-gray-700 dark:text-gray-400"
                       >
                         <tr>
-                          <th scope="col" class="px-6 py-3">Status Name</th>
-                          <th scope="col" class="px-6 py-3">Status Value</th>
+                          <th scope="col" class="px-6 py-3">{{useTrans('about.status_name')}}</th>
+                          <th scope="col" class="px-6 py-3">{{useTrans('about.status_value')}}</th>
                           <th scope="col" class="px-6 py-3"></th>
                         </tr>
                       </thead>
@@ -137,7 +137,7 @@
                       <label
                         for="status_name"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                        >Status Name</label
+                        >{{useTrans('about.status_name')}}</label
                       >
                       <input
                         type="text"
@@ -145,14 +145,14 @@
                         id="status_name"
                         v-model="statusName"
                         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                        placeholder="Years/Staffs.."
+                        placeholder="useTrans('about.years')"
                       />
                     </div>
                     <div class="col-span-5">
                       <label
                         for="status_value"
                         class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                        >Status Value</label
+                        >{{useTrans('about.status_value')}}</label
                       >
                       <input
                         type="text"
@@ -185,7 +185,7 @@
         <div class="flex items-center space-x-4">
           <Button
             @click.prevent="updateAboutPageContent()"
-            :text="'Update About Page'"
+            :text="useTrans('about.update')"
             :color="'blue'"
           ></Button>
         </div>
@@ -260,6 +260,7 @@ import Button from "../FormComponents/Button.vue";
 import Errors from "../FormComponents/Errors.vue";
 import { QuillEditor } from "@vueup/vue-quill";
 import "@vueup/vue-quill/dist/vue-quill.snow.css";
+import {useTrans} from "../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

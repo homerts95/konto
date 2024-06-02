@@ -3,12 +3,13 @@
     class="flex flex-col md:flex-row justify-between items-start md:items-center space-y-3 md:space-y-0 p-4"
     aria-label="Table navigation"
   >
-    <span class="text-sm font-normal text-gray-500 dark:text-gray-400">
-      Showing
+    <span class="text-sm font-normal text-gray-500 dark:text-gray-400"
+    >
+     {{useTrans('pageNav.showing')}}
       <span class="font-semibold text-gray-900 dark:text-white"
         >{{ data.from }}-{{ data.to }}</span
       >
-      of
+      {{useTrans('pageNav.of')}}
       <span class="font-semibold text-gray-900 dark:text-white">{{ data.total }}</span>
     </span>
 
@@ -58,6 +59,7 @@ export default {
 <script setup>
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
+import {useTrans} from "../../composables/trans";
 onMounted(() => {
   initFlowbite();
 });

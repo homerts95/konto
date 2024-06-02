@@ -91,7 +91,7 @@
           >
           or
           <Link href="/" class="hover:underline font-medium text-indigo-600"
-            >Continue Shopping with Us!</Link
+            v-text="useTrans('cancel.continue_shopping_with_us')"></Link
           >
         </p>
       </div>
@@ -99,7 +99,10 @@
   </div>
 </template>
 <script>
+import {useTrans} from "../../composables/trans";
+
 export default {
+    methods: {useTrans},
   props: ["aboutPageContent"],
 };
 </script>

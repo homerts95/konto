@@ -5,7 +5,7 @@
     <div class="mx-auto max-w-screen-xl px-1 lg:px-12 pb-10">
       <!-- Start coding here -->
       <h1 class="text-2xl text-gray-800 mb-2 font-poppins py-3 sm:py-2 font-medium">
-        Orders
+        {{useTrans('product.orders')}}
       </h1>
 
       <AlertDelete
@@ -18,7 +18,7 @@
       <div class="my-2">
         <Button
           @click.prevent="router.visit('/admin-dashboard/orders/create')"
-          :text="'+ Add Order'"
+          :text="'+ ' + useTrans('product.new_order')"
           :color="'blue'"
         ></Button>
       </div>
@@ -28,7 +28,7 @@
       >
         <Filters
           :filters="filters"
-          :searchPlaceHolder="'Search by Order ID, User Name/Email..'"
+          :searchPlaceHolder="useTrans('product.search_by_order_id_or_username_or_name_or_email')"
           :currentPage="orders.current_page"
           :dataName="'orders'"
           :sortByFilters="{ dateSort: true, priceSort: true }"
@@ -64,8 +64,7 @@ export default {
       window.scrollTo(0, 0);
       this.deleteAlertOrder = true;
       this.orderId = orderId;
-      this.deleteAlertOrderText = `Deleting the order will permanently removed from the database. You can't recover the
-      order again. Are you sure about deleting?`;
+      this.deleteAlertOrderText = useTrans('product.are_you_sure');
       setTimeout(() => (this.deleteAlertOrder = false), 5000);
     },
     deleteOrderConfirm() {
@@ -84,6 +83,7 @@ import TableOrders from "../../../Shared/Tables/TableOrders.vue";
 import PageNavigation from "../../../Shared/AdminDashboardComponents/PageNavigation.vue";
 import AlertDelete from "../../../Shared/AdminDashboardComponents/AlertDelete.vue";
 import Button from "../../../Shared/FormComponents/Button.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

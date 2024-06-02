@@ -20,7 +20,7 @@
       />
     </svg>
 
-    Sort
+    {{useTrans('sort.sort')}}
     <svg
       class="w-4 h-4 ml-2"
       aria-hidden="true"
@@ -190,7 +190,10 @@
   </div>
 </template>
 <script>
+import {useTrans} from "../../composables/trans";
+
 export default {
+    methods: {useTrans},
   props: ["modelValue", "sortByFilters"],
   emits: ["update:modelValue"],
 };

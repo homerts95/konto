@@ -9,10 +9,10 @@
         class="text-xs text-gray-700 uppercase bg-blue-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
-          <th scope="col" class="px-6 py-3">Prod. ID</th>
-          <th scope="col" class="px-6 py-3">Prod. Name</th>
-          <th scope="col" class="px-6 py-3">Prod. Price</th>
-          <th scope="col" class="px-6 py-3">Quantity</th>
+          <th scope="col" class="px-6 py-3">{{useTrans('table.product_id')}}</th>
+          <th scope="col" class="px-6 py-3">{{useTrans('table.product_name')}}</th>
+          <th scope="col" class="px-6 py-3">{{useTrans('table.product_price')}}</th>
+          <th scope="col" class="px-6 py-3">{{useTrans('table.qty')}}</th>
           <th scope="col" class="px-6 py-3"></th>
         </tr>
       </thead>
@@ -66,7 +66,10 @@
   </div>
 </template>
 <script>
+import {useTrans} from "../../composables/trans";
+
 export default {
+    methods: {useTrans},
   props: ["orderContent"],
 };
 </script>

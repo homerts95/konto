@@ -19,14 +19,16 @@
       />
     </svg>
 
-    <span class="sr-only">Refresh</span>
+    <span class="sr-only">{{useTrans('refreshPage.refresh')}}}</span>
   </button>
 </template>
 <script>
 import { router } from "@inertiajs/vue3";
+import {useTrans} from "../../composables/trans";
 export default {
   props: ["url"],
   methods: {
+      useTrans,
     reloadPage() {
       router.get(this.url);
     },

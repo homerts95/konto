@@ -127,12 +127,9 @@
               <div>
                 <MenuButton
                   class="group inline-flex justify-center text-sm font-medium text-gray-700 hover:text-gray-900"
-                >
-                  Sort
-                  <ChevronDownIcon
-                    class="-mr-1 ml-1 h-5 w-5 flex-shrink-0 text-gray-400 group-hover:text-gray-500"
-                    aria-hidden="true"
-                  />
+                v-text="useTrans('shop.sort')">
+
+
                 </MenuButton>
               </div>
 
@@ -275,11 +272,13 @@
 </template>
 
 <script>
+import {useTrans} from "../../composables/trans";
+
 export default {
   props: ["title"],
   computed: {
     filters() {
-      return [{ id: "categories", name: "Categories", options: this.defaultCategories }];
+      return [{ id: "categories", name: useTrans('shop.categories'), options: this.defaultCategories }];
     },
     defaultCategories() {
       return this.categories.map((item) => ({
@@ -327,15 +326,15 @@ export default {
       searchQuery: {},
       sortByValue: this.$page.props.filters.sortBy ?? "date-dsc",
       sortByOptions: [
-        { name: "Newest", value: "date-dsc" },
-        { name: "Price: Low to High", value: "price-asc" },
-        { name: "Price: High to Low", value: "price-dsc" },
+        { name: useTrans('shop.all'), value: "date-dsc" },
+        { name: useTrans('shop.price_lower_to_higher'), value: "price-asc" },
+        { name: useTrans('shop.price_higher_to_lower'), value: "price-dsc" },
       ],
       tagValue: this.$page.props.filters.tag ?? "",
       tagOptions: [
-        { name: "All", value: "" },
-        { name: "Best Sellers", value: "best_seller" },
-        { name: "New Arrivals", value: "new_arrival" },
+        { name: useTrans('shop.all'), value: "" },
+        { name: useTrans('shop.beer'), value: "best_seller" },
+        { name: useTrans('shop.gin'), value: "new_arrival" },
       ],
     };
   },

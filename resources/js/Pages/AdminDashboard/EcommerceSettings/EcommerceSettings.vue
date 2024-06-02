@@ -27,12 +27,12 @@
             </div>
             <div>
               <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                Payment Options
+                {{useTrans('settings.e_commerce_settings')}}
               </p>
 
               <div class="grid gap-4">
                 <FormCheckBox
-                  :label="'Enable/Edit Stripe Payment'"
+                  :label="useTrans('product.enable_edit_stripe_method')"
                   :name="'enable_stripe'"
                   :checked="ecommerceSettingsInfo.enable_stripe"
                   v-model="ecommerceSettingsInfo.enable_stripe"
@@ -145,6 +145,7 @@ import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadS
 import FormInput from "../../../Shared/FormComponents/FormInput.vue";
 import FormCheckBox from "../../../Shared/FormComponents/FormCheckBox.vue";
 import FormSelect from "../../../Shared/FormComponents/FormSelect.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

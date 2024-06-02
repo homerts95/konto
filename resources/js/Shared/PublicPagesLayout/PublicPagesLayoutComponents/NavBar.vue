@@ -81,14 +81,14 @@
 <!--              </div>-->
             </div>
 
-            <div class="border-t border-gray-200 px-4 py-6">
-              <a href="#" class="-m-2 flex items-center p-2">
-                <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt=""
-                  class="block h-auto w-5 flex-shrink-0" />
-                <span class="ml-3 block text-base font-medium text-gray-900">CAD</span>
-                <span class="sr-only">, change currency</span>
-              </a>
-            </div>
+<!--            <div class="border-t border-gray-200 px-4 py-6">-->
+<!--              <a href="#" class="-m-2 flex items-center p-2">-->
+<!--                <img src="https://tailwindui.com/img/flags/flag-canada.svg" alt=""-->
+<!--                  class="block h-auto w-5 flex-shrink-0" />-->
+<!--                <span class="ml-3 block text-base font-medium text-gray-900">CAD</span>-->
+<!--                <span class="sr-only">, change currency</span>-->
+<!--              </a>-->
+<!--            </div>-->
           </DialogPanel>
         </TransitionChild>
       </div>
@@ -164,7 +164,6 @@
                               <span class="absolute inset-0 z-10" aria-hidden="true" />
                               {{ item.name }}
                               </Link>
-                              <p aria-hidden="true" class="mt-1">Shop now</p>
                             </div>
                           </div>
                           <div class="row-start-1 grid grid-cols-3 gap-x-8 text-sm">
@@ -197,10 +196,10 @@
           <div class="ml-auto flex items-center">
             <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
               <Link href="/login" class="text-sm font-medium text-gray-700 hover:text-gray-800"
-                v-if="!usePage().props.auth.firstName ?? false">Sign in</Link>
+                v-if="!usePage().props.auth.firstName ?? false" v-text="useTrans('navbar.login')"></Link>
               <Link href="/dashboard"
                 class="text-sm font-medium text-gray-700 hover:text-gray-800 flex items-center gap-2" v-else>
-              Welcome, {{ usePage().props.auth.firstName }}
+              {{useTrans('navbar.welcome')}}, {{ usePage().props.auth.firstName }}
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
                 <path fill-rule="evenodd"
                   d="M18.685 19.097A9.723 9.723 0 0021.75 12c0-5.385-4.365-9.75-9.75-9.75S2.25 6.615 2.25 12a9.723 9.723 0 003.065 7.097A9.716 9.716 0 0012 21.75a9.716 9.716 0 006.685-2.653zm-12.54-1.285A7.486 7.486 0 0112 15a7.486 7.486 0 015.855 2.812A8.224 8.224 0 0112 20.25a8.224 8.224 0 01-5.855-2.438zM15.75 9a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0z"

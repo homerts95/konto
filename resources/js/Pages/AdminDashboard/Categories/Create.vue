@@ -18,11 +18,11 @@
             <div class="grid gap-4 mb-4 grid-cols-1 md:grid-cols-2">
               <div class="pr-5 border-r">
                 <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                  Category Details:
+                    {{useTrans('category.category_details')}}:
                 </p>
                 <div class="grid gap-4">
                   <FormInput
-                    :label="'Category Name'"
+                    :label="useTrans('category.category_name')"
                     :name="'category_name'"
                     :type="'text'"
                     :error="errors.name"
@@ -30,7 +30,7 @@
                     v-model="categoryInfo.name"
                   ></FormInput>
                   <FormInput
-                    :label="'Category Slug'"
+                    :label="useTrans('category.category_slug')"
                     :name="'category_slug'"
                     :type="'text'"
                     :error="errors.slug"
@@ -41,11 +41,11 @@
               </div>
               <div class="grid">
                 <div>
-                  <p class="font-medium text-blue-600 dark:text-gray-400 my-4">Image:</p>
+                  <p class="font-medium text-blue-600 dark:text-gray-400 my-4">{{useTrans('category.image')}}:</p>
 
                   <FormFileUploadSingle
                     @fileChange="(file) => (this.categoryInfo.img = file[0])"
-                    :label="'Image'"
+                    :label="useTrans('category.image')"
                     :name="'image'"
                     :error="errors.img"
                   ></FormFileUploadSingle>
@@ -59,7 +59,7 @@
             <div class="flex items-center space-x-4">
               <Button
                 @click.prevent="createCategory()"
-                :text="'Create Category'"
+                :text="useTrans('category.create_category')"
                 :color="'blue'"
               ></Button>
             </div>
@@ -120,6 +120,7 @@ import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadS
 
 import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

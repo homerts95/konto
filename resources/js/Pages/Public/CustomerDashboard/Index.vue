@@ -13,18 +13,18 @@
               <!-- product general details  -->
               <div>
                 <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                  Account Info:
+                  {{useTrans('customer.account_info')}}
                 </p>
                 <div class="grid gap-4 sm:grid-cols-2">
                   <FormInput
-                    :label="'First Name'"
+                    :label="useTrans('customer.first_name')"
                     :name="'first_name'"
                     :type="'text'"
                     v-model="userInfo.first_name"
                     :error="errors.first_name"
                   ></FormInput>
                   <FormInput
-                    :label="'Last Name'"
+                    :label="useTrans('customer.last_name')"
                     :name="'last_name'"
                     :type="'text'"
                     v-model="userInfo.last_name"
@@ -40,7 +40,7 @@
                     :error="errors.email"
                   ></FormInput>
                   <FormInput
-                    :label="'Phone Number'"
+                    :label="useTrans('customer.phone_number')"
                     :name="'phone_number'"
                     :type="'number'"
                     v-model="userInfo.phone_number"
@@ -49,14 +49,14 @@
                 </div>
                 <div class="grid gap-4 sm:grid-cols-2">
                   <FormInput
-                    :label="'Date of Birth'"
+                    :label="useTrans('customer.dob')"
                     :name="'birthday'"
                     :type="'date'"
                     v-model="userInfo.birthday"
                     :error="errors.birthday"
                   ></FormInput>
                   <FormInput
-                    :label="'Gender'"
+                    :label="useTrans('customer.gender')"
                     :name="'gender'"
                     :type="'text'"
                     v-model="userInfo.gender"
@@ -65,14 +65,14 @@
                 </div>
                 <div class="grid gap-4 sm:grid-cols-2">
                   <FormInput
-                    :label="'Change Password'"
+                    :label="useTrans('customer.change_password')"
                     :name="'password'"
                     :type="'password'"
                     v-model="userInfo.password"
                     :error="errors.password"
                   ></FormInput>
                   <FormInput
-                    :label="'Confirm Password'"
+                    :label="useTrans('customer.confirm_password')"
                     :name="'confirm_password'"
                     :type="'password'"
                     v-model="userInfo.password_confirmation"
@@ -85,12 +85,12 @@
             <div class="grid sm:col-span-2">
               <div>
                 <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-                  Profile Picture:
+                    {{useTrans('customer.profile_pic')}}
                 </p>
 
                 <FormFileUploadSingle
                   @fileChange="(file) => (avatar = file[0])"
-                  :label="'Profile Picture'"
+                  :label="useTrans('customer.profile_pic')"
                   :oldImageLink="oldAvatarImage"
                   :rounded="true"
                   :name="'avatar'"
@@ -105,7 +105,7 @@
       <div>
         <Errors :errors="errors ?? false"></Errors>
         <div class="flex items-center space-x-4">
-          <Button @click.prevent="updateUser()" :text="'Update'" :color="'blue'"></Button>
+          <Button @click.prevent="updateUser()" :text="useTrans('customer.update')" :color="'blue'"></Button>
         </div>
       </div>
     </form>
@@ -149,6 +149,7 @@ import FormInput from "../../../Shared/FormComponents/FormInput.vue";
 import FormFileUploadSingle from "../../../Shared/FormComponents/FormFileUploadSingle.vue";
 import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

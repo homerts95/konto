@@ -9,7 +9,7 @@
     ></WebsiteContentsCustomPage>
     <Button
       @click.prevent="addNewCustomPage()"
-      :text="'+ Add New Page'"
+      :text="'+' + useTrans('pages.new_custom_page')"
       :color="'blue'"
       :fullWidth="true"
     ></Button>
@@ -55,6 +55,7 @@ import Button from "../../../Shared/FormComponents/Button.vue";
 
 import WebsiteContentsCustomPage from "../../../Shared/AdminDashboardComponents/WebsiteContentsCustomPage.vue";
 import { router } from "@inertiajs/vue3";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

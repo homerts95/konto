@@ -5,12 +5,12 @@
         class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400"
       >
         <tr>
-          <th scope="col" class="px-4 py-3">ID</th>
-          <th scope="col" class="px-4 py-3">User</th>
-          <th scope="col" class="px-4 py-3">Phone Number</th>
-          <th scope="col" class="px-4 py-3">Date</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.id')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.user')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.phone_number')}}</th>
+          <th scope="col" class="px-4 py-3">{{useTrans('table.date')}}</th>
           <th scope="col" class="px-4 py-3">
-            <span class="sr-only">Actions</span>
+            <span class="sr-only">{{useTrans('table.actions')}}</span>
           </th>
         </tr>
       </thead>
@@ -64,7 +64,7 @@
             <span
               v-else
               class="bg-green-100 text-green-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-green-900 dark:text-green-300"
-              >Current User</span
+              >{{useTrans('table.current_user')}}</span
             >
             <div
               :id="`${user.id}-dropdown`"
@@ -78,14 +78,14 @@
                   <Link
                     :href="`/admin-dashboard/users/${user.id}`"
                     class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >Show</Link
+                    >{{useTrans('table.show_user')}}</Link
                   >
                 </li>
                 <li>
                   <Link
                     :href="`/admin-dashboard/users/${user.id}/edit`"
                     class="block py-2 px-4 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-                    >Edit</Link
+                    >{{useTrans('table.edit')}}</Link
                   >
                 </li>
               </ul>
@@ -94,7 +94,7 @@
                   href="#"
                   class="block py-2 px-4 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white"
                   @click="$emit('deleteUser', user.id)"
-                  >Delete</a
+                  >{{useTrans('table.delete')}}</a
                 >
               </div>
             </div>
@@ -104,7 +104,7 @@
     </table>
   </div>
 
-  <div v-else class="text-lg px-4 text-gray-500">No Users!</div>
+  <div v-else class="text-lg px-4 text-gray-500">{{useTrans('table.no_user')}}</div>
 </template>
 <script>
 export default {
@@ -126,6 +126,7 @@ export default {
 <script setup>
 import { onMounted } from "vue";
 import { initFlowbite } from "flowbite";
+import {useTrans} from "../../composables/trans";
 onMounted(() => {
   initFlowbite();
 });

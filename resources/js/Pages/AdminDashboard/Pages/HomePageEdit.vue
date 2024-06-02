@@ -17,7 +17,7 @@
                 <FormFileUploadMultiple
                   @files-change="(files) => (hero_carousel = files)"
                   @files-delete="deleteHeroCarousel"
-                  :label="'Upload Images'"
+                  :label="useTrans('pages.upload_images')"
                   :oldImageUrls="oldHeroCarousel"
                   :deleteImageUrl="'/admin-dashboard/pages/home-page-contents/delete-image'"
                   :preserveStateData="'homePageContent'"
@@ -36,7 +36,7 @@
           <div class="flex items-center space-x-4">
             <Button
               @click.prevent="updateHomePageContent()"
-              :text="'Update Home Page'"
+              :text="useTrans('pages.update_home_page')"
               :color="'blue'"
             ></Button>
           </div>
@@ -86,6 +86,7 @@ import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
 import Breadcrump from "../../../Shared/AdminDashboardComponents/Breadcrump.vue";
 import EditSectionLayout from "../../../Shared/AdminDashboardComponents/EditSectionLayout.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

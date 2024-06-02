@@ -18,8 +18,8 @@
           clip-rule="evenodd"
         ></path>
       </svg>
-      <span class="sr-only">Info</span>
-      <h3 class="text-lg font-medium">Are you Sure ?</h3>
+      <span class="sr-only">{{useTrans('alertDelete.info')}}</span>
+      <h3 class="text-lg font-medium">{{useTrans('alertDelete.are_you_sure')}}</h3>
     </div>
     <div class="mt-2 mb-4 text-sm">
       {{ text }}
@@ -58,7 +58,10 @@
   </div>
 </template>
 <script>
+import {useTrans} from "../../composables/trans";
+
 export default {
+    methods: {useTrans},
   props: ["text"],
   emits: ["close", "confirm"],
 };

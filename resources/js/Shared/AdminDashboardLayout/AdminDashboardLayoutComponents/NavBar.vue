@@ -12,7 +12,7 @@
             type="button"
             class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
           >
-            <span class="sr-only">Open sidebar</span>
+            <span class="sr-only">{{useTrans('sidebar.open')}}</span>
             <svg
               class="w-6 h-6"
               aria-hidden="true"
@@ -44,7 +44,7 @@
                 aria-expanded="false"
                 data-dropdown-toggle="dropdown-user"
               >
-                <span class="sr-only">Open user menu</span>
+                <span class="sr-only">{{useTrans('menu.open')}}</span>
                 <img
                   class="w-8 h-8 rounded-full"
                   :src="$page.props.auth.avatar"
@@ -73,7 +73,7 @@
                     href="/admin-dashboard"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Dashboard</Link
+                    >{{useTrans('admin.dashboard')}}</Link
                   >
                 </li>
                 <li>
@@ -81,7 +81,7 @@
                     href="/dashboard"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Profile</Link
+                    >{{useTrans('user.dashboard')}}</Link
                   >
                 </li>
                 <!-- <li>
@@ -98,7 +98,7 @@
                     method="post"
                     class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
                     role="menuitem"
-                    >Sign out</Link
+                    >{{useTrans('logout')}}</Link
                   >
                 </li>
               </ul>
@@ -109,3 +109,7 @@
     </div>
   </nav>
 </template>
+<script setup>
+import {useTrans} from "../../../composables/trans";
+
+</script>

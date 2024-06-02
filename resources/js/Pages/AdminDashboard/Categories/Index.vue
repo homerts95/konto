@@ -18,7 +18,7 @@
       <div class="my-2">
         <Button
           @click.prevent="router.visit('/admin-dashboard/categories/create')"
-          :text="'+ Add Category'"
+          :text="useTrans('category.add_category')"
           :color="'blue'"
         ></Button>
       </div>
@@ -27,7 +27,7 @@
         class="bg-white dark:bg-gray-800 relative shadow-md rounded-lg border-2 border-gray-200"
       >
         <Filters
-          :searchPlaceHolder="'Search by Category ID or Name'"
+          :searchPlaceHolder="useTrans('search_by_category_id_or_name')"
           :filters="filters"
           :currentPage="categories.current_page"
           :dataName="'categories'"
@@ -63,8 +63,7 @@ export default {
       window.scrollTo(0, 0);
       this.deleteAlertCategory = true;
       this.categoryId = categoryId;
-      this.deleteAlertCategoryText = `Deleting the category will permanently removed from the database. You can't recover the
-        category again. Are you sure about deleting?`;
+      this.deleteAlertCategoryText = useTrans('are_you_sure');
       setTimeout(() => (this.deleteAlertCategory = false), 5000);
     },
     deleteCategoryConfirm() {
@@ -83,6 +82,7 @@ import TableCategories from "../../../Shared/Tables/TableCategories.vue";
 import PageNavigation from "../../../Shared/AdminDashboardComponents/PageNavigation.vue";
 import AlertDelete from "../../../Shared/AdminDashboardComponents/AlertDelete.vue";
 import Button from "../../../Shared/FormComponents/Button.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

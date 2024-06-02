@@ -8,18 +8,18 @@
         <div class="grid gap-4 mb-4">
           <div class="pr-5 border-r">
             <p class="font-medium text-blue-600 dark:text-gray-400 my-4">
-              Shipping Address:
+                {{useTrans('checkout.shipping_method')}} :
             </p>
 
             <div class="grid gap-4 sm:grid-cols-2">
               <FormInput
-                :label="'Address Line 1'"
+                :label="useTrans('customer.address1')"
                 :name="'address_line_1'"
                 :type="'text'"
                 v-model="userInfo.address_line_1"
               ></FormInput>
               <FormInput
-                :label="'Address Line 2'"
+                :label="useTrans('customer.address2')"
                 :name="'address_line_2'"
                 :type="'text'"
                 v-model="userInfo.address_line_2"
@@ -27,13 +27,13 @@
             </div>
             <div class="grid gap-4 sm:grid-cols-2">
               <FormInput
-                :label="'City'"
+                :label="useTrans('customer.city')"
                 :name="'city'"
                 :type="'text'"
                 v-model="userInfo.city"
               ></FormInput>
               <FormInput
-                :label="'Pin code'"
+                :label="useTrans('customer.postal_code')"
                 :name="'pin_code'"
                 :type="'text'"
                 v-model="userInfo.pin_code"
@@ -41,7 +41,7 @@
             </div>
             <div class="grid gap-4 sm:grid-cols-2">
               <FormInput
-                :label="'Country'"
+                :label="useTrans('customer.country')"
                 :name="'country'"
                 :type="'text'"
                 v-model="userInfo.country"
@@ -57,7 +57,7 @@
         <div class="flex items-center space-x-4">
           <Button
             @click.prevent="updateAddress()"
-            :text="'Update'"
+            :text="useTrans('customer.update')"
             :color="'blue'"
           ></Button>
         </div>
@@ -94,6 +94,7 @@ import { initFlowbite } from "flowbite";
 import FormInput from "../../../Shared/FormComponents/FormInput.vue";
 import Button from "../../../Shared/FormComponents/Button.vue";
 import Errors from "../../../Shared/FormComponents/Errors.vue";
+import {useTrans} from "../../../composables/trans";
 
 onMounted(() => {
   initFlowbite();

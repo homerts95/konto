@@ -49,8 +49,8 @@ class MainMenu extends Model
             ],
             "pages" => [
                 ["name" => __('menu.shop'), "href" => asset('') . 'shop'],
-                ["name" => __('menu.about_us'), "href" => asset('') . 'about'],
-                ["name" => __('menu.contact'), "href" => asset('') . 'contact'],
+//                ["name" => __('menu.about_us'), "href" => asset('') . 'about'],
+//                ["name" => __('menu.contact'), "href" => asset('') . 'contact'],
             ],
         ];
         return json_encode($publicMenu);

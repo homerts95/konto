@@ -1,6 +1,6 @@
 <template>
     <EditSectionLayout>
-        <Breadcrump :links="{ 'Theme Settings': null, 'Edit Footer': null }"></Breadcrump>
+        <Breadcrump :links="{ 'Ρυθμίσεις θέματος': null, 'Επεξεργασία Footer': null }"></Breadcrump>
 
         <div
             class="relative p-4 bg-white border border-gray-200 rounded-lg shadow dark:border-gray-700 dark:bg-gray-800 sm:p-5 my-10"

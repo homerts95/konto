@@ -5,7 +5,7 @@
     <CategoryList :categories="categories"></CategoryList>
     <ProductsIndex
         :products="productBestSellers"
-        :title="useTrans( 'home.best-sellers')"
+        :title="useTrans( 'home.best_sellers')"
         :cols="4"
         class="mb-10"
     ></ProductsIndex>

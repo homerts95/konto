@@ -47,22 +47,21 @@ class AdminProductController extends Controller
 
     }
 
-    public function store(FileManagement $fileManagement)
-    {   
-
+    public function store( FileManagement $fileManagement)
+    {
         $attributes = $this->validateProduct();
 
         if($attributes['thumbnail'] ?? false){
-            $attributes['thumbnail'] = 
+//            dd($attributes['thumbnail']);
+            $attributes['thumbnail'] =
             $fileManagement->uploadFile(
                 file:$attributes['thumbnail'] ?? false,
                 path:'images/products/'.$attributes['slug'].'/thumbnail'
             );
         }
 
-
         if($attributes['more_images'] ?? false){
-            $attributes['more_images'] = 
+            $attributes['more_images'] =
             $fileManagement->uploadFile(
                 files:$attributes['more_images'] ?? false,
                 path:'images/products/'.$attributes['slug'].'/more_images'
@@ -89,7 +88,7 @@ class AdminProductController extends Controller
         $attributes = $this->validateProduct($product);
 
         if($attributes['thumbnail'] ?? false){
-            $attributes['thumbnail'] = 
+            $attributes['thumbnail'] =
             $fileManagement->uploadFile(
                 file:$attributes['thumbnail'] ?? false,
                 path:'images/products/'.$product->slug.'/thumbnail',
@@ -99,7 +98,7 @@ class AdminProductController extends Controller
         }
 
         if($attributes['more_images'] ?? false){
-            $attributes['more_images'] = 
+            $attributes['more_images'] =
             $fileManagement->uploadFile(
                 files:$attributes['more_images'] ?? false,
                 appendFilesTo:$product->more_images,
@@ -151,16 +150,16 @@ class AdminProductController extends Controller
             'price_sale' => 'nullable',
             'price' => 'required',
             'slug' => [$product->exists ? 'exclude' : 'required', Rule::unique('products', 'slug')->ignore($product)],
-            'thumbnail' => $product->exists ? 'nullable|mimes:jpeg,png |max:2096' : 'required|mimes:jpeg,png |max:2096',
-            'more_images.*' => $product->exists ?'nullable|mimes:jpeg,png |max:2096':'required|mimes:jpeg,png |max:2096',
+            'thumbnail' => $product->exists ? 'nullable|mimes:jpeg,png,jpg |max:5096' : 'required|mimes:jpeg,png,jpg |max:2096',
+            'more_images.*' => $product->exists ?'nullable|mimes:jpeg,png,jpg |max:5096':'required|mimes:jpeg,png,jpg |max:2096',
             'description' => 'required',
             'short_description' => 'required',
             'product_details' => 'nullable',
             'created_at' => 'nullable',
             'updated_at' => 'nullable',
         ],[
-            'thumbnail' => 'Upload thumbnail as jpg/png format with size less than 2MB',
-            'more_images.*' => 'Upload images as jpg/png format with size less than 2MB',
+//            'thumbnail' => 'Upload thumbnail as jpg/png format with size less than 5MB',
+//            'more_images.*' => 'Upload images as jpg/png format with size less than 5MB',
         ]);
     }
 }

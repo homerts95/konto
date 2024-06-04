@@ -1,7 +1,7 @@
 <template>
   <EditSectionLayout>
     <Breadcrump
-      :links="{ 'Theme Settings': null, 'Edit Logo and Site Info': null }"
+      :links="{ 'Ρυθμίσεις θέματος': null, 'Επεξεργασία logo και πληροφορίες καταστήματος': null }"
     ></Breadcrump>
 
     <div

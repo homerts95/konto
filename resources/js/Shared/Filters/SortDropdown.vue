@@ -63,7 +63,7 @@
           <label
             for="default-radio-4"
             class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
-            >Date - New first</label
+            >{{useTrans('date.date_new_first')}}</label
           >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@
           <label
             for="default-radio-4"
             class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
-            >Date - Old first</label
+            >{{useTrans('date.date_old_first')}}</label
           >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -133,7 +133,7 @@
           <label
             for="default-radio-4"
             class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
-            >Price Highest first</label
+            >{{useTrans('date.price_highest_first')}}</label
           >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -168,7 +168,7 @@
           <label
             for="default-radio-4"
             class="w-full ml-2 text-sm font-medium text-gray-900 rounded dark:text-gray-300"
-            >Price Lowest first</label
+            >{{useTrans('date.price_lower_firstÏ')}}</label
           >
           <svg
             xmlns="http://www.w3.org/2000/svg"

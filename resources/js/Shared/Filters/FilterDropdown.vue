@@ -19,7 +19,7 @@
           clip-rule="evenodd"
         />
       </svg>
-      Filter
+      {{useTrans('filters.filters')}}
       <svg
         class="-mr-1 ml-1.5 w-5 h-5"
         fill="currentColor"
@@ -40,7 +40,7 @@
     >
       <div v-if="enableFilterByFilters.orderStatus">
         <h6 class="my-3 text-sm font-medium text-gray-900 dark:text-white">
-          Order Status
+            {{useTrans('date.order_status')}}
         </h6>
         <ul class="space-y-2 text-sm" aria-labelledby="filterDropdownButton">
           <div
@@ -181,6 +181,8 @@ export default {
 };
 </script>
 <script setup>
+import {useTrans} from "../../composables/trans";
+
 function convertString(string) {
   var newString = string.split("_").join(" ");
   return newString.charAt(0).toUpperCase() + newString.slice(1);

@@ -6,30 +6,33 @@ use Illuminate\Support\Facades\Storage;
 class FileManagement
 {
     public function uploadFile(
-        string $path, 
+        string $path,
         $file = null,
         array $files = null,
-        array $appendFilesTo = array(), 
-        bool $deleteOldFile = false, 
-        string $oldFile = null, 
+        array $appendFilesTo = array(),
+        bool $deleteOldFile = false,
+        string $oldFile = null,
         string $storeAsName = ''
         )
     {
-        if(!empty($files)){   
+
+        if(!empty($files)){
             foreach ($files as $file) {
                 array_push($appendFilesTo,$file->store($path));
             }
             return $appendFilesTo;
 
-        } 
+        }
         else if(!empty($file) && !empty($file->extension() ?? ''))
         {
+
             if($deleteOldFile){
                 if(Storage::disk('public')->exists($oldFile)){
                     Storage::delete($oldFile);
                 }
             }
             if(empty($storeAsName)){
+
                 $storeAsName = $file->getClientOriginalName();
             } else {
                 $storeAsName = $storeAsName.'.'.$file->extension();
@@ -70,6 +73,6 @@ class FileManagement
         if(!empty($deleteDirectory)) {
             Storage::deleteDirectory($deleteDirectory);
         }
-        
+
     }
 }

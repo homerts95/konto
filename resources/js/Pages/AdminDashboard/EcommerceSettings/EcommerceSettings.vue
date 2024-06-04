@@ -14,7 +14,7 @@
             <div class="pr-5 md:border-r">
               <div class="grid gap-4">
                 <FormSelect
-                  :label="'Choose currency'"
+                  :label="useTrans('settings.choose_currency')"
                   :name="'currency'"
                   v-model="ecommerceSettingsInfo.currency"
                   :selected="ecommerceSettingsInfo.currency"
@@ -49,7 +49,7 @@
                 ></FormInput>
 
                 <FormCheckBox
-                  :label="'Enable Order on WhatsApp'"
+                  :label="useTrans('settings.enable_on_whats_up')"
                   :name="'enable_whatsapp'"
                   :checked="ecommerceSettingsInfo.enable_whatsapp"
                   v-model="ecommerceSettingsInfo.enable_whatsapp"
@@ -65,7 +65,7 @@
                 <div class="flex gap-4 items-center">
                   <i class="fa-brands fa-whatsapp text-4xl text-green-600 mt-2"></i>
                   <FormInput
-                    :label="'WhatsApp Number'"
+                    :label="useTrans('settings.whats_up_number')"
                     :name="'whatsapp_number'"
                     :type="'text'"
                     :disabled="!ecommerceSettingsInfo.enable_whatsapp"
@@ -83,7 +83,7 @@
           <div class="flex items-center space-x-4">
             <Button
               @click.prevent="updateEcommerceSettings()"
-              :text="'Update E-Commerce Settings'"
+              :text="useTrans('settings.update')"
               :color="'blue'"
             ></Button>
           </div>

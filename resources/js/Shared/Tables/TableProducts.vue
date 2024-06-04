@@ -33,6 +33,7 @@
             {{ product.id }}
           </th>
           <td class="p-4">
+              {{ product.thumbnail_url }}
             <div
               class="w-20 h-20 bg-cover bg-center rounded-lg"
               :style="`background-image: url(${product.thumbnail_url})`"
@@ -127,7 +128,7 @@
     </table>
   </div>
 
-  <div v-else class="text-lg px-4 text-gray-500">No Products!</div>
+  <div v-else class="text-lg px-4 text-gray-500">{{useTrans('product.no-products')}}</div>
 </template>
 <script>
 export default {

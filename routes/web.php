@@ -40,9 +40,9 @@ Route::name('public.')->group(function () {
 
 
 //    Route::get( '/', fn() => dd( Inertia::getShared() ) );
-    Route::get('/about', [PublicPagesController::class, 'aboutPage'])->name('about');
-    Route::get('/contact', [PublicPagesController::class, 'contactPage'])->name('contact');
-    Route::get('/pages/{customPage:slug}', [PublicPagesController::class, 'customPage'])->name('customPage');
+   // Route::get('/about', [PublicPagesController::class, 'aboutPage'])->name('about');
+ //   Route::get('/contact', [PublicPagesController::class, 'contactPage'])->name('contact');
+ //   Route::get('/pages/{customPage:slug}', [PublicPagesController::class, 'customPage'])->name('customPage');
 
 
     Route::name('account.')->group(function(){
@@ -101,16 +101,16 @@ Route::name('admin.')->group(function(){
             Route::name('pages.')->group(function(){
                 Route::prefix('pages')->group(function () {
                 Route::get('/home-page-content/edit', [AdminHomePageContentController::class, 'edit'])->name('home_page_edit');
-                Route::get('/about-page-content/edit', [AdminAboutPageContentController::class, 'edit'])->name('about_page_edit');
-                Route::get('/contact-page-content/edit', [AdminContactPageContentController::class, 'edit'])->name('contact_page_edit');
-                Route::get('/more-pages/edit', [AdminCustomPageController::class, 'edit'])->name('more_pages_edit');
+         //       Route::get('/about-page-content/edit', [AdminAboutPageContentController::class, 'edit'])->name('about_page_edit');
+        //        Route::get('/contact-page-content/edit', [AdminContactPageContentController::class, 'edit'])->name('contact_page_edit');
+           //     Route::get('/more-pages/edit', [AdminCustomPageController::class, 'edit'])->name('more_pages_edit');
                 Route::put('/home-page-contents/delete-image', [AdminHomePageContentController::class, 'deleteImage'])->name('home_page_deleteImage');
                 Route::put('/home-page-content', [AdminHomePageContentController::class, 'update'])->name('home_page_update');
-                Route::put('/about-page-content', [AdminAboutPageContentController::class, 'update'])->name('about_page_update');
-                Route::put('/contact-page-content', [AdminContactPageContentController::class, 'update'])->name('contact_page_update');
+            //    Route::put('/about-page-content', [AdminAboutPageContentController::class, 'update'])->name('about_page_update');
+           //     Route::put('/contact-page-content', [AdminContactPageContentController::class, 'update'])->name('contact_page_update');
                 Route::post('/more-pages-store', [AdminCustomPageController::class, 'store'])->name('more_pages_store');
-                Route::put('/custom-page-content/{customPage}', [AdminCustomPageController::class, 'update'])->name('more_pages_update');
-                Route::delete('/custom-page-content/{customPage}', [AdminCustomPageController::class, 'destroy'])->name('more_pages_delete');
+          //      Route::put('/custom-page-content/{customPage}', [AdminCustomPageController::class, 'update'])->name('more_pages_update');
+          //      Route::delete('/custom-page-content/{customPage}', [AdminCustomPageController::class, 'destroy'])->name('more_pages_delete');
                 });
             });
 

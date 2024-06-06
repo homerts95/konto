@@ -49,9 +49,6 @@ jobs:
       - name: Create Session Table
         run: php artisan session:table
 
-      - name: Run Migrations
-        run: php artisan migrate
-
       - name: Run Tests
         env:
           DB_CONNECTION: sqlite

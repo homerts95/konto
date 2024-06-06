@@ -139,10 +139,10 @@ class Product extends Model
 
 //fixme handle null values else breaks
 
-        return Attribute::make(
-            get: function ($value) {
-                return json_encode(array_map(fn($value): string => asset($value ?? ''), [$this->more_images]));
-            });
+//        return Attribute::make(
+//            get: function ($value) {
+//                return json_encode(array_map(fn($value): string => asset($value ?? ''), [$this->more_images]));
+//            });
 
 
     }

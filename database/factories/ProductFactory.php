@@ -19,7 +19,7 @@ class ProductFactory extends Factory
     {
         return [
             'name'=> $this->faker->word(),
-            'category_id'=>Category::factory(),
+            'category_id'=>1,
             'brand'=> $this->faker->word(),
             'thumbnail' => $this->faker->randomElement(
                 [

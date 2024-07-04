@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Category;
 use App\Models\EcommerceSettings;
 use App\Models\User;
 use App\Models\Product;
@@ -59,5 +60,7 @@ class DatabaseSeeder extends Seeder
 //         Cart::factory(5)->create();
 
         Product::factory(25)->create();
+        Category::factory(1)->create();
     }
 }
+
